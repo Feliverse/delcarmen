@@ -170,20 +170,20 @@ function App() {
   return (
     <div style={{ fontFamily: "Arial, sans-serif" }}>
       <header style={{ backgroundColor: "#35424a", color: "#ffffff", padding: "20px", textAlign: "center" }}>
-        <h1>Parroquia Nuestra Señora del Carmen</h1>
+        <h1 style={{fontSize: "2rem"}}>Parroquia Nuestra Señora del Carmen y San Maximiliano Kolbe</h1>
       </header>
 
       <main style={{ padding: "20px", backgroundColor: "#f4f4f4", minHeight: "80vh" }}>
-        <section style={{ marginTop: "2rem", backgroundColor: "white", padding: "20px", borderRadius: "8px", marginBottom: "20px" }}>
-          <h2>Bienvenidos</h2>
+        <section style={{ marginTop: "2rem", backgroundColor: "white", padding: "20px", borderRadius: "8px", marginBottom: "20px", color: "#333" }}>
+          <h2 style={{ color: "#333" }}>Bienvenidos</h2>
           <p>
             Somos la Parroquia Nuestra Señora del Carmen, una comunidad de fe dedicada al servicio de nuestros feligreses. 
             Con una larga tradición de devoción y compromiso, nos esforzamos por ser un lugar de paz, esperanza y comunidad.
           </p>
         </section>
 
-        <section style={{ marginTop: "2rem", backgroundColor: "white", padding: "20px", borderRadius: "8px", marginBottom: "20px" }}>
-          <h2>Horarios de Misa</h2>
+        <section style={{ marginTop: "2rem", backgroundColor: "white", padding: "20px", borderRadius: "8px", marginBottom: "20px", color: "#333" }}>
+          <h2 style={{ color: "#333" }}>Horarios de Misa</h2>
           <ul style={{ textAlign: "left" }}>
             <li><strong>Lunes a Viernes:</strong> 7:00 AM y 6:00 PM</li>
             <li><strong>Sábados:</strong> 8:00 AM y 6:00 PM</li>
@@ -191,8 +191,8 @@ function App() {
           </ul>
         </section>
 
-        <section style={{ marginTop: "2rem", backgroundColor: "white", padding: "20px", borderRadius: "8px", marginBottom: "20px" }}>
-          <h2>Evangelio del Día</h2>
+        <section style={{ marginTop: "2rem", backgroundColor: "white", padding: "20px", borderRadius: "8px", marginBottom: "20px", color: "#333" }}>
+          <h2 style={{ color: "#333" }}>Evangelio del Día</h2>
           <p>
             <strong>Lectura Diaria:</strong> Acompáñanos en nuestra reflexión diaria sobre el Evangelio. 
             Recibe el mensaje de Jesús cada día para guiar tu camino espiritual.
@@ -272,8 +272,8 @@ function App() {
           )}
         </section>
 
-        <section style={{ marginTop: "2rem", backgroundColor: "white", padding: "20px", borderRadius: "8px", marginBottom: "20px" }}>
-          <h2>Mensaje Inspirador</h2>
+        <section style={{ marginTop: "2rem", backgroundColor: "white", padding: "20px", borderRadius: "8px", marginBottom: "20px", color: "#333" }}>
+          <h2 style={{ color: "#333" }}>Mensaje Inspirador</h2>
           <p>
             <strong>Reflexión Espiritual:</strong> Recibe mensajes de esperanza, fe y amor cada día. 
             Nuestros pastores comparten inspiración para fortalecer tu relación con Dios.
@@ -353,8 +353,8 @@ function App() {
           )}
         </section>
 
-        <section style={{ marginTop: "2rem", backgroundColor: "white", padding: "20px", borderRadius: "8px", marginBottom: "20px" }}>
-          <h2>Contacto</h2>
+        <section style={{ marginTop: "2rem", backgroundColor: "white", padding: "20px", borderRadius: "8px", marginBottom: "20px", color: "#333" }}>
+          <h2 style={{ color: "#333" }}>Contacto</h2>
           <p>
             <strong>Dirección:</strong> Calle Principal, Ciudad<br />
             <strong>Teléfono:</strong> (XXX) XXX-XXXX<br />
