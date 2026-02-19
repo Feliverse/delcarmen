@@ -2,6 +2,18 @@
 
 This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
 
+## Configuración API.Bible
+
+1. Copia `.env.example` a `.env`
+2. Completa `VITE_BIBLE_API_KEY` con tu clave de API.Bible
+3. (Opcional) Ajusta `VITE_BIBLE_ID` para cambiar la traducción
+
+Variables usadas:
+
+- `VITE_BIBLE_API_KEY`
+- `VITE_BIBLE_API_BASE` (por defecto `https://rest.api.bible/v1`)
+- `VITE_BIBLE_ID`
+
 Currently, two official plugins are available:
 
 - [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) (or [oxc](https://oxc.rs) when used in [rolldown-vite](https://vite.dev/guide/rolldown)) for Fast Refresh
