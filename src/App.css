@@ -1,17 +1,1 @@
-body {
-  margin: 0;
-  font-family: Arial, sans-serif;
-}
-
-header {
-  margin-bottom: 2rem;
-}
-
-button {
-  background-color: #4CAF50;
-  color: white;
-  padding: 10px 20px;
-  border: none;
-  border-radius: 5px;
-  cursor: pointer;
-}
+/* App.css is deprecated. All styles are now handled via Tailwind CSS in App.tsx */
