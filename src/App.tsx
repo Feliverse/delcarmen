@@ -20,6 +20,16 @@ const BOOK_NAMES: Record<string, string> = {
   '3JN': '3 Juan', JUD: 'Judas', REV: 'Apocalipsis'
 };
 
+const NAV_LINKS = [
+  { label: 'Inicio', href: '#hero' },
+  { label: 'Palabra del Día', href: '#palabra' },
+  { label: 'Horarios', href: '#horarios' },
+  { label: 'Trámites', href: '#tramites' },
+  { label: 'Noticias', href: '#noticias' },
+  { label: 'Grupos', href: '#grupos' },
+  { label: 'Contacto', href: '#contacto' },
+];
+
 function formatPassageReference(reference?: string, fallbackId?: string) {
   const source = reference || fallbackId || '';
   if (!source) return '';
@@ -54,34 +64,74 @@ function formatPassageReference(reference?: string, fallbackId?: string) {
 
 function Navbar() {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
+  const [activeHref, setActiveHref] = useState('#hero');
 
-  const navLinks = [
-    { label: 'Inicio', href: '#hero' },
-    { label: 'Palabra del Día', href: '#palabra' },
-    { label: 'Horarios', href: '#horarios' },
-    { label: 'Trámites', href: '#tramites' },
-    { label: 'Noticias', href: '#noticias' },
-    { label: 'Grupos', href: '#grupos' },
-    { label: 'Contacto', href: '#contacto' },
-  ];
+  useEffect(() => {
+    const updateActiveLink = () => {
+      const topOffset = 120;
+      let currentHref = NAV_LINKS[0].href;
+
+      for (const link of NAV_LINKS) {
+        const section = document.querySelector(link.href) as HTMLElement | null;
+        if (!section) continue;
+
+        if (section.offsetTop - topOffset <= window.scrollY) {
+          currentHref = link.href;
+        }
+      }
+
+      setActiveHref(currentHref);
+    };
+
+    let isTicking = false;
+    const onScroll = () => {
+      if (isTicking) return;
+      isTicking = true;
+      window.requestAnimationFrame(() => {
+        updateActiveLink();
+        isTicking = false;
+      });
+    };
+
+    const onHashChange = () => {
+      const hash = window.location.hash;
+      if (NAV_LINKS.some((link) => link.href === hash)) {
+        setActiveHref(hash);
+      }
+    };
+
+    updateActiveLink();
+    onHashChange();
+
+    window.addEventListener('scroll', onScroll, { passive: true });
+    window.addEventListener('resize', onScroll);
+    window.addEventListener('hashchange', onHashChange);
+
+    return () => {
+      window.removeEventListener('scroll', onScroll);
+      window.removeEventListener('resize', onScroll);
+      window.removeEventListener('hashchange', onHashChange);
+    };
+  }, []);
 
   return (
-    <nav className="sticky top-0 z-50 bg-gradient-to-r from-conventual-habit to-conventual-ash shadow-lg">
+    <nav
+      className={`fixed top-0 z-50 w-full md:sticky ${
+        mobileMenuOpen ? 'bg-stone-900 shadow-lg' : 'bg-transparent md:bg-stone-900 md:shadow-lg'
+      }`}
+    >
       <div className="mx-auto max-w-5xl px-4 py-4 text-conventual-light">
-        <div className="flex items-center justify-between">
-          <div className="flex items-center gap-2 font-serif text-lg font-bold tracking-wide">
-            <div className="h-8 w-8 rounded-full bg-conventual-gold flex items-center justify-center">
-              <span className="text-xs font-bold text-conventual-habit">NSC</span>
-            </div>
-            <span>Ntra. Sra. del Carmen</span>
-          </div>
+        <div className="flex items-center justify-end">
 
           <div className="hidden space-x-8 md:flex">
-            {navLinks.map((link) => (
+            {NAV_LINKS.map((link) => (
               <a
                 key={link.href}
                 href={link.href}
-                className="text-sm font-medium transition hover:text-conventual-gold hover:underline"
+                className={`text-sm font-medium text-stone-100 transition hover:text-conventual-gold hover:underline ${
+                  activeHref === link.href ? 'text-conventual-gold underline underline-offset-4' : ''
+                }`}
+                onClick={() => setActiveHref(link.href)}
               >
                 {link.label}
               </a>
@@ -90,26 +140,34 @@ function Navbar() {
 
           <button
             onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
-            className="flex h-8 w-8 flex-col items-center justify-center gap-1.5 md:hidden"
+            className="relative z-50 flex h-8 w-8 items-center justify-center md:hidden"
+            aria-label={mobileMenuOpen ? 'Cerrar menú' : 'Abrir menú'}
           >
-            <span className={`block h-0.5 w-6 bg-white transition ${mobileMenuOpen ? 'rotate-45 translate-y-2' : ''}`}></span>
-            <span className={`block h-0.5 w-6 bg-white transition ${mobileMenuOpen ? 'opacity-0' : ''}`}></span>
-            <span className={`block h-0.5 w-6 bg-white transition ${mobileMenuOpen ? '-rotate-45 -translate-y-2' : ''}`}></span>
+            <span className={`absolute block h-1 w-6 rounded-sm border border-black bg-white transition ${mobileMenuOpen ? 'rotate-45' : '-translate-y-2'}`}></span>
+            <span className={`absolute block h-1 w-6 rounded-sm border border-black bg-white transition ${mobileMenuOpen ? 'opacity-0' : 'opacity-100'}`}></span>
+            <span className={`absolute block h-1 w-6 rounded-sm border border-black bg-white transition ${mobileMenuOpen ? '-rotate-45' : 'translate-y-2'}`}></span>
           </button>
         </div>
 
         {mobileMenuOpen && (
-          <div className="mt-4 space-y-3 border-t border-conventual-light/20 pt-4 md:hidden">
-            {navLinks.map((link) => (
+          <div className="fixed inset-0 z-40 bg-stone-900 pt-24 md:hidden">
+            <div className="flex h-full flex-col items-center justify-center gap-6 px-6 pb-12">
+            {NAV_LINKS.map((link) => (
               <a
                 key={link.href}
                 href={link.href}
-                className="block text-sm font-medium transition hover:text-conventual-gold"
-                onClick={() => setMobileMenuOpen(false)}
+                className={`block text-xl font-medium text-stone-100 transition hover:text-conventual-gold ${
+                  activeHref === link.href ? 'text-conventual-gold underline underline-offset-4' : ''
+                }`}
+                onClick={() => {
+                  setActiveHref(link.href);
+                  setMobileMenuOpen(false);
+                }}
               >
                 {link.label}
               </a>
             ))}
+            </div>
           </div>
         )}
       </div>
@@ -154,7 +212,7 @@ function HeroSection() {
   };
 
   return (
-    <section id="hero" className="relative h-96 overflow-hidden bg-gray-900 md:h-screen">
+    <section id="hero" className="relative h-screen scroll-mt-24 overflow-hidden bg-gray-900">
       <div className="absolute inset-0">
         {HERO_SLIDES.map((slide, index) => (
           <img
@@ -205,14 +263,15 @@ function HeroSection() {
             <img
               src={currentHeroLogo}
               alt="Logotipo tipográfico de la parroquia"
-              className="mx-auto max-h-64 w-full max-w-4xl object-contain md:-ml-80 md:mx-0"
+              className="mx-auto w-full object-contain max-h-80 md:max-h-40 max-w-4xl md:-ml-80 md:mx-0"
               onError={() => setHeroLogoMissing(true)}
             />
           )}
-          <p className="text-2xl text-white md:text-6xl text-center">Paz y Bien</p>np
-          <p className="mx-auto max-w-2xl text-lg text-white text-center">
-            Bienvenido a la página oficial de la Parroquia Nuestra Señora del Carmen y San Maximiliano Kolbe. Aquí encontrarás toda la información que necesitas para vivir tu fe en comunidad con nosotros.
+          <p className="text-4xl text-white md:text-7xl text-center">Jubileo Franciscano</p>
+          <p className="mx-auto max-w-2xl text-2xl text-white text-center">
+            Por los 800 años del transito de San Francisco de Asis<br/>(1226-2026)
           </p>
+          
 
           <div className="mt-6 flex items-center justify-center gap-2 md:justify-start">
             {HERO_SLIDES.map((slide, index) => (
@@ -302,7 +361,7 @@ function App() {
 
       <main className="mx-auto max-w-5xl space-y-12 px-4 py-12">
         {/* ===== PALABRA DEL DÍA ===== */}
-        <section id="palabra" className="rounded-lg bg-white p-6 shadow-md md:p-8">
+        <section id="palabra" className="scroll-mt-24 rounded-lg bg-white p-6 shadow-md md:p-8">
           <h2 className="mb-6 font-serif text-3xl font-semibold text-conventual-habit">
             Palabra del Día
           </h2>
@@ -375,7 +434,7 @@ function App() {
         </section>
 
         {/* ===== HORARIOS (CORAZÓN) ===== */}
-        <section id="horarios" className="rounded-lg bg-white p-6 shadow-md md:p-8">
+        <section id="horarios" className="scroll-mt-24 rounded-lg bg-white p-6 shadow-md md:p-8">
           <h2 className="mb-6 font-serif text-3xl font-semibold text-conventual-habit">
             Horarios de Misas y Confesiones
           </h2>
@@ -420,7 +479,7 @@ function App() {
         </section>
 
         {/* ===== TRÁMITES ===== */}
-        <section id="tramites" className="rounded-lg bg-white p-6 shadow-md md:p-8">
+        <section id="tramites" className="scroll-mt-24 rounded-lg bg-white p-6 shadow-md md:p-8">
           <h2 className="mb-6 font-serif text-3xl font-semibold text-conventual-habit">
             Trámites y Sacramentos
           </h2>
@@ -473,7 +532,7 @@ function App() {
         </section>
 
         {/* ===== NOTICIAS/EVENTOS ===== */}
-        <section id="noticias" className="rounded-lg bg-white p-6 shadow-md md:p-8">
+        <section id="noticias" className="scroll-mt-24 rounded-lg bg-white p-6 shadow-md md:p-8">
           <h2 className="mb-6 font-serif text-3xl font-semibold text-conventual-habit">
             Noticias y Eventos
           </h2>
@@ -534,7 +593,7 @@ function App() {
         </section>
 
         {/* ===== GRUPOS ===== */}
-        <section id="grupos" className="rounded-lg bg-white p-6 shadow-md md:p-8">
+        <section id="grupos" className="scroll-mt-24 rounded-lg bg-white p-6 shadow-md md:p-8">
           <h2 className="mb-6 font-serif text-3xl font-semibold text-conventual-habit">
             Nuestros Grupos
           </h2>
@@ -567,7 +626,7 @@ function App() {
         </section>
 
         {/* ===== CONTACTO ===== */}
-        <section id="contacto" className="rounded-lg bg-conventual-habit p-6 text-conventual-light shadow-md md:p-8">
+        <section id="contacto" className="scroll-mt-24 rounded-lg bg-conventual-habit p-6 text-conventual-light shadow-md md:p-8">
           <h2 className="mb-6 font-serif text-3xl font-semibold">Contacto</h2>
 
           <div className="grid gap-6 md:grid-cols-2">
