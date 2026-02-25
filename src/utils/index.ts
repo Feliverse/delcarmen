@@ -1,0 +1,1 @@
+export { formatPassageReference } from './bibleFormatting';

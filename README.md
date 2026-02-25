@@ -14,6 +14,26 @@ Variables usadas:
 - `VITE_BIBLE_API_BASE` (por defecto `https://rest.api.bible/v1`)
 - `VITE_BIBLE_ID`
 
+## Configuración Contacto (Formspree + WhatsApp)
+
+1. En `.env`, configura `VITE_FORMSPREE_ENDPOINT` con tu endpoint de Formspree (ej. `https://formspree.io/f/xxxxabcd`)
+2. Configura `VITE_WHATSAPP_NUMBER` con formato internacional sin `+` ni espacios (ej. `5917XXXXXXX`)
+
+Variables usadas:
+
+- `VITE_FORMSPREE_ENDPOINT`
+- `VITE_WHATSAPP_NUMBER`
+
+## Configuración Footer (redes y enlaces)
+
+En `.env`, puedes personalizar los enlaces del pie de página:
+
+- `VITE_PARISH_FACEBOOK_URL`
+- `VITE_ARQ_CBBA_URL`
+- `VITE_OFM_BOLIVIA_URL`
+- `VITE_CEB_URL`
+- `VITE_VATICAN_NEWS_URL`
+
 Currently, two official plugins are available:
 
 - [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) (or [oxc](https://oxc.rs) when used in [rolldown-vite](https://vite.dev/guide/rolldown)) for Fast Refresh
