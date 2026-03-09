@@ -97,6 +97,19 @@ export function HeroSection() {
             Por los 800 años del transito de San Francisco de Asis<br />(1226-2026)
           </p>
 
+          <div className="mx-auto mt-4 flex w-full max-w-sm flex-col items-center gap-3 rounded-lg border border-white/30 bg-slate-950/70 px-4 py-3 text-center shadow-lg backdrop-blur-sm md:mx-0 md:inline-flex md:w-auto md:max-w-none md:flex-row md:items-center md:gap-4 md:text-left">
+            <div>
+              <p className="text-xs font-semibold uppercase tracking-wide text-amber-200">Próxima misa</p>
+              <p className="text-sm font-semibold text-white md:text-base">Hoy · 7:00 p. m.</p>
+            </div>
+            <a
+              href="#horarios"
+              className="inline-flex min-h-10 w-full items-center justify-center rounded-md border border-white/40 bg-white/95 px-3 py-2 text-sm font-semibold text-slate-900 transition hover:bg-amber-300 hover:text-slate-900 md:w-auto"
+            >
+              Ver horarios
+            </a>
+          </div>
+
           <div className="mt-6 flex items-center justify-center gap-2 md:justify-start">
             {HERO_SLIDES.map((slide, index) => (
               <button
