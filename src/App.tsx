@@ -154,7 +154,6 @@ function App() {
           messageError={messageError}
           onToggleMessage={handleGetInspirationalMessage}
           formatReference={formatPassageReference}
-          primaryButtonClass={primaryButtonClass}
         />
 
         <SchedulesSection />
