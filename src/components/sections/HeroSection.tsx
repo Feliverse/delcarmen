@@ -37,7 +37,7 @@ export function HeroSection() {
   };
 
   return (
-    <section id="hero" className="relative h-screen scroll-mt-24 overflow-hidden bg-gray-900">
+    <section id="hero" className="relative h-[100svh] scroll-mt-24 overflow-hidden bg-gray-900 md:h-screen">
       <div className="absolute inset-0">
         {HERO_SLIDES.map((slide, index) => (
           <img
@@ -54,7 +54,7 @@ export function HeroSection() {
         ))}
       </div>
 
-      <div className="absolute inset-0 bg-gradient-to-r from-black/50 via-black/40 to-black/50" />
+      <div className="absolute inset-0 bg-gradient-to-r from-black/60 via-black/50 to-black/60" />
 
       <div className="absolute inset-y-0 left-0 z-20 flex items-center px-3 md:px-6">
         <button
@@ -79,21 +79,21 @@ export function HeroSection() {
       </div>
 
       <div className="relative z-10 flex h-full w-full items-center justify-center text-center md:items-start md:justify-start md:text-left">
-        <div className="w-full space-y-4 px-4 md:px-10 md:pt-10">
+        <div className="animate-fade-in-soft w-full space-y-4 px-4 md:space-y-6 md:px-10 md:pt-14 lg:pt-16">
           {heroLogoMissing ? (
-            <h1 className="font-serif text-4xl font-bold text-white md:text-6xl">
+            <h1 className="font-serif text-3xl font-bold leading-tight text-white md:text-5xl lg:text-6xl">
               Parroquia Nuestra Señora del Carmen<br />y San Maximiliano Kolbe
             </h1>
           ) : (
             <img
               src={currentHeroLogo}
               alt="Logotipo tipográfico de la parroquia"
-              className="mx-auto max-h-80 w-full max-w-4xl object-contain md:-ml-80 md:mx-0 md:max-h-40"
+              className="mx-auto max-h-80 w-full max-w-4xl object-contain md:mx-0 md:max-h-40 lg:-ml-64"
               onError={() => setHeroLogoMissing(true)}
             />
           )}
-          <p className="text-center text-4xl text-white md:text-7xl">Jubileo Franciscano</p>
-          <p className="mx-auto max-w-2xl text-center text-2xl text-white">
+          <p className="text-center font-serif text-3xl text-white md:text-6xl">Jubileo Franciscano</p>
+          <p className="mx-auto max-w-2xl text-center text-lg leading-relaxed text-white/95 md:text-xl">
             Por los 800 años del transito de San Francisco de Asis<br />(1226-2026)
           </p>
 

@@ -84,12 +84,12 @@ export function Navbar({ links }: NavbarProps) {
 
           <button
             onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
-            className="relative z-50 flex h-8 w-8 items-center justify-center md:hidden"
+            className="relative z-50 flex h-11 w-11 items-center justify-center md:hidden"
             aria-label={mobileMenuOpen ? 'Cerrar menú' : 'Abrir menú'}
           >
-            <span className={`absolute block h-1 w-6 rounded-sm border border-black bg-white transition ${mobileMenuOpen ? 'rotate-45' : '-translate-y-2'}`}></span>
-            <span className={`absolute block h-1 w-6 rounded-sm border border-black bg-white transition ${mobileMenuOpen ? 'opacity-0' : 'opacity-100'}`}></span>
-            <span className={`absolute block h-1 w-6 rounded-sm border border-black bg-white transition ${mobileMenuOpen ? '-rotate-45' : 'translate-y-2'}`}></span>
+            <span className={`absolute block h-1 w-7 rounded-sm border border-black bg-white transition ${mobileMenuOpen ? 'rotate-45' : '-translate-y-2'}`}></span>
+            <span className={`absolute block h-1 w-7 rounded-sm border border-black bg-white transition ${mobileMenuOpen ? 'opacity-0' : 'opacity-100'}`}></span>
+            <span className={`absolute block h-1 w-7 rounded-sm border border-black bg-white transition ${mobileMenuOpen ? '-rotate-45' : 'translate-y-2'}`}></span>
           </button>
         </div>
 

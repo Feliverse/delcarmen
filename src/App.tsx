@@ -141,7 +141,7 @@ function App() {
       <Navbar links={NAV_LINKS} />
       <HeroSection />
 
-      <main className="mx-auto max-w-5xl space-y-12 px-4 py-12">
+      <main className="mx-auto max-w-5xl space-y-10 px-4 py-10 sm:px-5 md:space-y-14 md:py-14 lg:space-y-16 lg:py-16">
         <WordSection
           gospelContent={gospelContent}
           showGospel={showGospel}

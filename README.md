@@ -34,6 +34,14 @@ En `.env`, puedes personalizar los enlaces del pie de página:
 - `VITE_CEB_URL`
 - `VITE_VATICAN_NEWS_URL`
 
+## Bitácora OCR (avance)
+
+Resumen de lo ya implementado en el flujo OCR para billetes:
+
+- Integración de Tesseract para reconocimiento de texto.
+- Verificación del valor del billete combinando detección por color + OCR.
+- Calibración inicial con las primeras fotografías de referencia para mejorar precisión.
+
 Currently, two official plugins are available:
 
 - [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) (or [oxc](https://oxc.rs) when used in [rolldown-vite](https://vite.dev/guide/rolldown)) for Fast Refresh

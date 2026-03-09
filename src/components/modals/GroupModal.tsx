@@ -13,8 +13,8 @@ export function GroupModal({ group, onClose, whatsappLink }: GroupModalProps) {
     <div className="fixed inset-0 z-[70] bg-black/70 backdrop-blur-sm" onClick={onClose}>
       <div className="h-full w-full overflow-hidden bg-white shadow-2xl ring-1 ring-black/10 md:mx-auto md:my-[7.5vh] md:h-[85vh] md:w-[85vw] md:rounded-xl">
         <div className="flex h-full flex-col" onClick={(event) => event.stopPropagation()}>
-          <div className="flex items-center justify-between border-b border-conventual-ash/30 px-4 py-3 md:px-6 md:py-4">
-            <h3 className="font-serif text-2xl font-semibold text-conventual-habit md:text-3xl">{group.name}</h3>
+          <div className="flex items-center justify-between gap-3 border-b border-conventual-ash/30 px-4 py-3 md:px-6 md:py-4">
+            <h3 className="min-w-0 break-words font-serif text-xl font-semibold text-conventual-habit sm:text-2xl md:text-3xl">{group.name}</h3>
             <button
               type="button"
               aria-label="Cerrar modal"
@@ -41,7 +41,7 @@ export function GroupModal({ group, onClose, whatsappLink }: GroupModalProps) {
             </div>
 
             <div className="overflow-hidden rounded-lg border border-conventual-ash/25 bg-white shadow-sm">
-              <img src={group.image} alt={group.name} className="h-full min-h-64 w-full object-cover" />
+              <img src={group.image} alt={group.name} className="h-56 w-full object-cover sm:h-72 md:h-full md:min-h-64" />
             </div>
           </div>
         </div>

@@ -30,13 +30,13 @@ export function WordSection({
   primaryButtonClass,
 }: WordSectionProps) {
   return (
-    <section id="palabra" className="scroll-mt-24 rounded-lg bg-white p-6 shadow-md md:p-8">
-      <h2 className="mb-6 font-serif text-3xl font-semibold text-conventual-habit">Palabra del Día</h2>
+    <section id="palabra" className="animate-fade-in-soft scroll-mt-24 rounded-lg bg-white p-5 shadow-md md:p-10 lg:p-11">
+      <h2 className="mb-4 font-serif text-2xl font-semibold text-conventual-habit md:mb-6 md:text-3xl">Palabra del Día</h2>
 
-      <div className="grid gap-6 md:grid-cols-2">
+      <div className="grid gap-5 md:grid-cols-2 md:gap-8">
         <div>
-          <h3 className="mb-3 font-semibold text-conventual-habit">Evangelio de Hoy</h3>
-          <p className="mb-4 text-sm text-conventual-ash">
+          <h3 className="mb-2 font-serif text-lg font-semibold text-conventual-habit md:text-xl">Evangelio de Hoy</h3>
+          <p className="mb-4 max-w-prose text-sm leading-relaxed text-conventual-ash md:text-base">
             Reflexiona con el Evangelio del día para guiar tu camino espiritual.
           </p>
           <button
@@ -64,8 +64,8 @@ export function WordSection({
         </div>
 
         <div>
-          <h3 className="mb-3 font-semibold text-conventual-habit">Reflexión Espiritual</h3>
-          <p className="mb-4 text-sm text-conventual-ash">
+          <h3 className="mb-2 font-serif text-lg font-semibold text-conventual-habit md:text-xl">Reflexión Espiritual</h3>
+          <p className="mb-4 max-w-prose text-sm leading-relaxed text-conventual-ash md:text-base">
             Recibe un mensaje de esperanza y fe para fortalecer tu relación con Dios.
           </p>
           <button

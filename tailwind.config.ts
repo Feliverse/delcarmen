@@ -8,10 +8,10 @@ const config: Config = {
     extend: {
       colors: {
         conventual: {
-          light: '#F8F4EC',  // Marfil cálido franciscano
-          ash: '#5A5F7A',    // Azul pizarra mariano
-          habit: '#1F2D3D',  // Azul noche (San Maximiliano)
-          gold: '#CBA052',   // Oro carmelita litúrgico
+          light: '#F3EEE4',  // Marfil tenue nocturno
+          ash: '#4F5D78',    // Azul gris profundo
+          habit: '#142033',  // Azul noche solemne
+          gold: '#B7903F',   // Dorado envejecido litúrgico
         }
       },
       fontFamily: {

@@ -22,6 +22,28 @@ body {
   }
 }
 
+@keyframes fadeInSoft {
+  from {
+    opacity: 0;
+    transform: translateY(12px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
 .animate-fade-in-up {
   animation: fadeInUp 220ms ease-out;
+}
+
+.animate-fade-in-soft {
+  animation: fadeInSoft 560ms ease-out both;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .animate-fade-in-up,
+  .animate-fade-in-soft {
+    animation: none;
+  }
 }

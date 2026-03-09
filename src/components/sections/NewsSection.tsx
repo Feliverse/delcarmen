@@ -4,15 +4,15 @@ type NewsSectionProps = {
 
 export function NewsSection({ primaryButtonClass }: NewsSectionProps) {
   return (
-    <section id="noticias" className="scroll-mt-24 rounded-lg bg-white p-6 shadow-md md:p-8">
-      <h2 className="mb-6 font-serif text-3xl font-semibold text-conventual-habit">Noticias y Eventos</h2>
+    <section id="noticias" className="animate-fade-in-soft scroll-mt-24 rounded-lg bg-white p-5 shadow-md md:p-10 lg:p-11">
+      <h2 className="mb-4 font-serif text-2xl font-semibold text-conventual-habit md:mb-6 md:text-3xl">Noticias y Eventos</h2>
 
       <div className="space-y-4">
-        <div className="border-l-4 border-conventual-gold bg-conventual-light p-4">
-          <div className="flex items-start justify-between">
+        <div className="border-l-4 border-conventual-gold bg-conventual-light p-4 md:p-6">
+          <div className="flex flex-col gap-3 sm:flex-row sm:items-start sm:justify-between">
             <div>
-              <h3 className="font-serif font-semibold text-conventual-habit">Triduo Pascual</h3>
-              <p className="text-sm text-conventual-ash">
+              <h3 className="font-serif text-lg font-semibold text-conventual-habit md:text-xl">Triduo Pascual</h3>
+              <p className="text-sm leading-relaxed text-conventual-ash md:text-base">
                 Acompáñanos en la celebración más importante del año cristiano.
               </p>
             </div>
@@ -20,21 +20,21 @@ export function NewsSection({ primaryButtonClass }: NewsSectionProps) {
           </div>
         </div>
 
-        <div className="border-l-4 border-conventual-gold bg-conventual-light p-4">
-          <div className="flex items-start justify-between">
+        <div className="border-l-4 border-conventual-gold bg-conventual-light p-4 md:p-6">
+          <div className="flex flex-col gap-3 sm:flex-row sm:items-start sm:justify-between">
             <div>
-              <h3 className="font-serif font-semibold text-conventual-habit">Jornada de Adoración Eucarística</h3>
-              <p className="text-sm text-conventual-ash">Primer viernes de cada mes de 6 PM a medianoche.</p>
+              <h3 className="font-serif text-lg font-semibold text-conventual-habit md:text-xl">Jornada de Adoración Eucarística</h3>
+              <p className="text-sm leading-relaxed text-conventual-ash md:text-base">Primer viernes de cada mes de 6 PM a medianoche.</p>
             </div>
             <span className="rounded-md bg-conventual-habit px-3 py-1 text-xs text-conventual-light">Mensual</span>
           </div>
         </div>
 
-        <div className="border-l-4 border-conventual-gold bg-conventual-light p-4">
-          <div className="flex items-start justify-between">
+        <div className="border-l-4 border-conventual-gold bg-conventual-light p-4 md:p-6">
+          <div className="flex flex-col gap-3 sm:flex-row sm:items-start sm:justify-between">
             <div>
-              <h3 className="font-serif font-semibold text-conventual-habit">Retiro Espiritual</h3>
-              <p className="text-sm text-conventual-ash">Profundiza en tu fe con nuestros retiros trimestrales.</p>
+              <h3 className="font-serif text-lg font-semibold text-conventual-habit md:text-xl">Retiro Espiritual</h3>
+              <p className="text-sm leading-relaxed text-conventual-ash md:text-base">Profundiza en tu fe con nuestros retiros trimestrales.</p>
             </div>
             <span className="rounded-md bg-conventual-habit px-3 py-1 text-xs text-conventual-light">Trimestral</span>
           </div>

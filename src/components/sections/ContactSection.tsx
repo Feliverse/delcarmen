@@ -9,14 +9,14 @@ type ContactSectionProps = {
 
 export function ContactSection({ formspreeEndpoint, whatsappLink, primaryButtonClass }: ContactSectionProps) {
   return (
-    <section id="contacto" className="scroll-mt-24 rounded-lg bg-conventual-habit p-6 text-conventual-light shadow-md md:p-8">
-      <h2 className="mb-6 font-serif text-3xl font-semibold">Contacto</h2>
+    <section id="contacto" className="animate-fade-in-soft scroll-mt-24 rounded-lg bg-conventual-habit p-5 text-conventual-light shadow-md md:p-10 lg:p-11">
+      <h2 className="mb-4 font-serif text-2xl font-semibold md:mb-6 md:text-3xl">Contacto</h2>
 
-      <div className="grid gap-8 lg:grid-cols-2">
+      <div className="grid gap-8 md:gap-10 lg:grid-cols-2">
         <div className="space-y-6">
           <div>
-            <h3 className="mb-3 font-semibold">Ubicación</h3>
-            <p className="text-sm leading-relaxed">
+            <h3 className="mb-2 font-serif text-lg font-semibold md:text-xl">Ubicación</h3>
+            <p className="text-sm leading-relaxed md:text-base">
               Av. Maximiliano Kolbe<br />
               zona Quintanilla - Sacaba<br />
               Bolivia
@@ -24,8 +24,8 @@ export function ContactSection({ formspreeEndpoint, whatsappLink, primaryButtonC
           </div>
 
           <div>
-            <h3 className="mb-3 font-semibold">Comunicación</h3>
-            <p className="text-sm leading-relaxed">
+            <h3 className="mb-2 font-serif text-lg font-semibold md:text-xl">Comunicación</h3>
+            <p className="text-sm leading-relaxed md:text-base">
               <strong>Teléfono:</strong> 4721733<br />
             </p>
             <a
@@ -42,7 +42,7 @@ export function ContactSection({ formspreeEndpoint, whatsappLink, primaryButtonC
 
         <form action={formspreeEndpoint} method="POST" className="rounded-lg bg-black/10 p-4 shadow-sm ring-1 ring-white/15 md:p-6">
           <div className="grid gap-5">
-            <p className="text-sm leading-relaxed text-conventual-light/95">
+            <p className="text-sm leading-relaxed text-conventual-light/95 md:text-base">
               Nos alegrará escucharte. Escríbenos con confianza y con gusto te responderemos lo antes posible.
             </p>
 
