@@ -12,7 +12,7 @@ export function ContactSection({ formspreeEndpoint, whatsappLink, primaryButtonC
     <section id="contacto" className="animate-fade-in-soft scroll-mt-24 rounded-xl bg-gradient-to-br from-slate-700 via-slate-600 to-slate-800 p-5 text-slate-100 shadow-md md:p-10 lg:p-11">
       <h2 className="mb-2 font-serif text-2xl font-semibold text-slate-50 md:text-3xl">Contacto</h2>
       <p className="mb-5 max-w-2xl text-sm leading-relaxed text-slate-100 md:mb-6 md:text-base">
-        Estamos para acompañarte. Escríbenos o contáctanos por WhatsApp.
+        Los Frailes Menores Conventuales estamos para acompañarte. Escríbenos o contáctanos por WhatsApp.
       </p>
 
       <div className="grid gap-8 md:gap-10 lg:grid-cols-2">

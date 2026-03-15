@@ -5,7 +5,7 @@ export function SchedulesSection() {
         Horarios de Misas y Confesiones
       </h2>
       <p className="mb-5 max-w-2xl text-sm leading-relaxed text-conventual-ash md:mb-6 md:text-base">
-        Consulta los horarios semanales para participar en la Eucaristía y acercarte al sacramento de la reconciliación.
+        Consulta los horarios semanales de la comunidad franciscana conventual para participar en la Eucaristía y acercarte al sacramento de la reconciliación.
       </p>
 
       <div className="grid gap-5 md:grid-cols-2 md:gap-8">

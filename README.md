@@ -1,113 +1,124 @@
-# React + TypeScript + Vite
+# Parroquia Nuestra Señora del Carmen — Sitio Web
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+Sitio web parroquial desarrollado con React, TypeScript, Vite y Tailwind CSS.
+Incluye secciones informativas, horarios, grupos, contacto con Formspree/WhatsApp y módulo de Palabra del Día conectado a API.Bible.
 
-## Configuración API.Bible
+## Stack
 
-1. Copia `.env.example` a `.env`
-2. Completa `VITE_BIBLE_API_KEY` con tu clave de API.Bible
-3. (Opcional) Ajusta `VITE_BIBLE_ID` para cambiar la traducción
+- React 19 + TypeScript
+- Vite 7
+- Tailwind CSS 4
+- Font Awesome
+- ESLint
 
-Variables usadas:
+## Funcionalidades principales
 
-- `VITE_BIBLE_API_KEY`
-- `VITE_BIBLE_API_BASE` (por defecto `https://rest.api.bible/v1`)
-- `VITE_BIBLE_ID`
+- Hero con carrusel y bloque de “Próxima misa”.
+- Palabra del Día (Evangelio + Reflexión) usando API.Bible.
+- Horarios de Misas y Confesiones.
+- Trámites y Sacramentos.
+- Noticias y Eventos.
+- Grupos parroquiales con modal de detalle.
+- Contacto por formulario (Formspree) y botón de WhatsApp.
+- Footer con enlaces de interés configurables por entorno.
 
-## Configuración Contacto (Formspree + WhatsApp)
+## Requisitos
 
-1. En `.env`, configura `VITE_FORMSPREE_ENDPOINT` con tu endpoint de Formspree (ej. `https://formspree.io/f/xxxxabcd`)
-2. Configura `VITE_WHATSAPP_NUMBER` con formato internacional sin `+` ni espacios (ej. `5917XXXXXXX`)
+- Node.js 20+
+- npm 10+
 
-Variables usadas:
+## Instalación y ejecución
 
-- `VITE_FORMSPREE_ENDPOINT`
-- `VITE_WHATSAPP_NUMBER`
+1. Instalar dependencias:
 
-## Configuración Footer (redes y enlaces)
+```bash
+npm install
+```
 
-En `.env`, puedes personalizar los enlaces del pie de página:
+2. Crear archivo de entorno:
+
+```bash
+cp .env.example .env
+```
+
+En Windows PowerShell:
+
+```powershell
+Copy-Item .env.example .env
+```
+
+3. Ejecutar en desarrollo:
+
+```bash
+npm run dev
+```
+
+4. Compilar producción:
+
+```bash
+npm run build
+```
+
+5. Previsualizar build:
+
+```bash
+npm run preview
+```
+
+## Variables de entorno
+
+Configura estas variables en `.env`:
+
+### API.Bible
+
+- `VITE_BIBLE_API_KEY`: clave de API.Bible.
+- `VITE_BIBLE_API_BASE`: base URL (por defecto `https://rest.api.bible/v1`).
+- `VITE_BIBLE_ID`: traducción de Biblia (por defecto `48acedcf8595c754-01`).
+
+### Contacto
+
+- `VITE_FORMSPREE_ENDPOINT`: endpoint de Formspree.
+- `VITE_WHATSAPP_NUMBER`: número internacional sin `+` ni espacios.
+
+### Enlaces institucionales
 
 - `VITE_PARISH_FACEBOOK_URL`
 - `VITE_ARQ_CBBA_URL`
 - `VITE_OFM_BOLIVIA_URL`
 - `VITE_CEB_URL`
 - `VITE_VATICAN_NEWS_URL`
+- `VITE_FRANCISCANOS_BOLIVIA_URL`
 
-## Bitácora OCR (avance)
+> Si no configuras alguna variable, el proyecto usa valores por defecto definidos en `src/data/siteData.ts`.
 
-Resumen de lo ya implementado en el flujo OCR para billetes:
+## Scripts disponibles
 
-- Integración de Tesseract para reconocimiento de texto.
-- Verificación del valor del billete combinando detección por color + OCR.
-- Calibración inicial con las primeras fotografías de referencia para mejorar precisión.
+- `npm run dev`: inicia servidor local con HMR.
+- `npm run build`: compila en `dist/`.
+- `npm run preview`: sirve la build localmente.
+- `npm run lint`: ejecuta ESLint.
+- `npm run deploy`: publica `dist/` en GitHub Pages.
 
-Currently, two official plugins are available:
+## Despliegue (GitHub Pages)
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) (or [oxc](https://oxc.rs) when used in [rolldown-vite](https://vite.dev/guide/rolldown)) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+Este proyecto ya incluye scripts para `gh-pages`:
 
-## React Compiler
-
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
-
-## Expanding the ESLint configuration
-
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
-
-```js
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-
-      // Remove tseslint.configs.recommended and replace with this
-      tseslint.configs.recommendedTypeChecked,
-      // Alternatively, use this for stricter rules
-      tseslint.configs.strictTypeChecked,
-      // Optionally, add this for stylistic rules
-      tseslint.configs.stylisticTypeChecked,
-
-      // Other configs...
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
+```bash
+npm run deploy
 ```
 
-You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
+Esto ejecuta `predeploy` (`npm run build`) y luego publica `dist/`.
 
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x'
-import reactDom from 'eslint-plugin-react-dom'
+## Estructura resumida
 
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-      // Enable lint rules for React
-      reactX.configs['recommended-typescript'],
-      // Enable lint rules for React DOM
-      reactDom.configs.recommended,
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
-```
+- `src/components/layout`: navbar y footer.
+- `src/components/sections`: secciones principales de la home.
+- `src/components/modals`: modales (detalle de grupos).
+- `src/services`: integración con API.Bible.
+- `src/data`: enlaces, grupos y configuración del sitio.
+- `public/hero-carousel`: imágenes y logos del hero.
+
+## Notas técnicas
+
+- Si falta `VITE_BIBLE_API_KEY`, la sección Palabra del Día mostrará mensaje de configuración en lugar de datos.
+- El estilo visual está unificado con una línea moderna de acentos cálidos y tonos slate para contraste.

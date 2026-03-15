@@ -3,7 +3,7 @@ export function ProceduresSection() {
     <section id="tramites" className="animate-fade-in-soft scroll-mt-24 rounded-xl bg-gradient-to-b from-amber-50 via-white to-slate-50 p-5 shadow-md md:p-10 lg:p-11">
       <h2 className="mb-2 font-serif text-2xl font-semibold text-slate-900 md:text-3xl">Trámites y Sacramentos</h2>
       <p className="mb-5 max-w-2xl text-sm leading-relaxed text-slate-700 md:mb-6 md:text-base">
-        Encuentra aquí los requisitos principales para cada sacramento y proceso parroquial.
+        Encuentra aquí los requisitos principales para cada sacramento y proceso pastoral de la comunidad franciscana conventual.
       </p>
 
       <div className="grid gap-4 md:grid-cols-2">
@@ -11,7 +11,7 @@ export function ProceduresSection() {
           <p className="mb-2 inline-flex rounded-full bg-amber-100 px-2.5 py-1 text-xs font-semibold uppercase tracking-wide text-slate-900">Sacramento</p>
           <h3 className="mb-2 font-serif text-lg font-semibold text-slate-900 md:text-xl">Bautismo</h3>
           <ul className="space-y-1 text-sm leading-relaxed text-slate-700 md:text-base">
-            <li>• Solicitar cita con la parroquia</li>
+            <li>• Solicitar cita con la parroquia de Quintanilla</li>
             <li>• Certificado de nacimiento</li>
             <li>• Padrino/Madrina confirma su fe</li>
             <li>• Preparación de padres (opcional)</li>
@@ -47,7 +47,18 @@ export function ProceduresSection() {
             <li>• Disponible durante confesiones</li>
             <li>• No requiere cita previa</li>
             <li>• Confidencialidad garantizada</li>
-            <li>• Encuentro personal con el sacerdote</li>
+            <li>• Encuentro personal con el fraile sacerdote</li>
+          </ul>
+        </article>
+
+        <article className="rounded-xl border border-slate-300 bg-white p-4 shadow-sm ring-1 ring-slate-200 md:p-6">
+          <p className="mb-2 inline-flex rounded-full bg-slate-200 px-2.5 py-1 text-xs font-semibold uppercase tracking-wide text-slate-800">Sacramento</p>
+          <h3 className="mb-2 font-serif text-lg font-semibold text-slate-900 md:text-xl">Orden sacerdotal u Orden Sagrado</h3>
+          <ul className="space-y-1 text-sm leading-relaxed text-slate-700 md:text-base">
+            <li>• Discernimiento vocacional acompañado</li>
+            <li>• Formación en seminario o casa de formación</li>
+            <li>• Etapas de ministerio según la Iglesia</li>
+            <li>• Contacto previo con la parroquia de Quintanilla</li>
           </ul>
         </article>
       </div>

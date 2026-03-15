@@ -2,9 +2,10 @@ import { useEffect, useState } from 'react';
 import { getDailyGospel, getDailyInspirationalMessage } from './services';
 import type { BiblePassage } from './services';
 import { Footer, Navbar } from './components/layout';
-import { GroupModal } from './components/modals';
+import { ChapelModal } from './components/modals';
 import {
   ContactSection,
+  ChapelsSection,
   GroupsSection,
   HeroSection,
   NewsSection,
@@ -13,15 +14,15 @@ import {
   WordSection,
 } from './components/sections';
 import {
+  CHAPELS,
   FORM_SPREE_ENDPOINT,
   GROUPS,
   INTEREST_LINKS,
   NAV_LINKS,
   PARISH_FACEBOOK_URL,
   WHATSAPP_LINK,
-  WHATSAPP_NUMBER,
 } from './data';
-import type { ParishGroup } from './types';
+import type { Chapel } from './types';
 import { formatPassageReference } from './utils';
 
 function App() {
@@ -33,7 +34,7 @@ function App() {
   const [showMessage, setShowMessage] = useState(false);
   const [messageLoading, setMessageLoading] = useState(false);
   const [messageError, setMessageError] = useState<string | null>(null);
-  const [selectedGroup, setSelectedGroup] = useState<ParishGroup | null>(null);
+  const [selectedChapel, setSelectedChapel] = useState<Chapel | null>(null);
 
   const handleGetGospel = async () => {
     if (showGospel) {
@@ -113,14 +114,14 @@ function App() {
     'inline-flex min-h-10 items-center justify-center rounded-md bg-conventual-habit px-4 py-2 text-sm font-medium text-conventual-light transition hover:bg-conventual-ash hover:text-white disabled:cursor-not-allowed disabled:opacity-70';
 
   useEffect(() => {
-    if (!selectedGroup) return;
+    if (!selectedChapel) return;
 
     const previousOverflow = document.body.style.overflow;
     document.body.style.overflow = 'hidden';
 
     const onKeyDown = (event: KeyboardEvent) => {
       if (event.key === 'Escape') {
-        setSelectedGroup(null);
+        setSelectedChapel(null);
       }
     };
 
@@ -130,11 +131,7 @@ function App() {
       document.body.style.overflow = previousOverflow;
       window.removeEventListener('keydown', onKeyDown);
     };
-  }, [selectedGroup]);
-
-  const groupWhatsappLink = selectedGroup
-    ? `https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent(`Hola, quisiera información sobre ${selectedGroup.name}.`)}`
-    : WHATSAPP_LINK;
+  }, [selectedChapel]);
 
   return (
     <div className="min-h-screen bg-conventual-light text-conventual-habit">
@@ -159,7 +156,8 @@ function App() {
         <SchedulesSection />
         <ProceduresSection />
         <NewsSection primaryButtonClass={primaryButtonClass} />
-        <GroupsSection groups={GROUPS} onSelectGroup={setSelectedGroup} />
+        <GroupsSection groups={GROUPS} whatsappLink={WHATSAPP_LINK} />
+        <ChapelsSection chapels={CHAPELS} onSelectChapel={setSelectedChapel} />
         <ContactSection
           formspreeEndpoint={FORM_SPREE_ENDPOINT}
           whatsappLink={WHATSAPP_LINK}
@@ -167,11 +165,10 @@ function App() {
         />
       </main>
 
-      {selectedGroup && (
-        <GroupModal
-          group={selectedGroup}
-          onClose={() => setSelectedGroup(null)}
-          whatsappLink={groupWhatsappLink}
+      {selectedChapel && (
+        <ChapelModal
+          chapel={selectedChapel}
+          onClose={() => setSelectedChapel(null)}
         />
       )}
 

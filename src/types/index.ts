@@ -1,1 +1,1 @@
-export type { NavLink, InterestLink, ParishGroup } from './site';
+export type { NavLink, InterestLink, ParishGroup, Chapel } from './site';

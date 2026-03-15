@@ -14,3 +14,13 @@ export type ParishGroup = {
   description: string;
   image: string;
 };
+
+export type Chapel = {
+  name: string;
+  location: string;
+  patroness: string;
+  feast: string;
+  masses: string;
+  pastoral: string[];
+  image: string;
+};

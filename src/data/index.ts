@@ -6,4 +6,5 @@ export {
   PARISH_FACEBOOK_URL,
   INTEREST_LINKS,
   GROUPS,
+  CHAPELS,
 } from './siteData';

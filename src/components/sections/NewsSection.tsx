@@ -7,16 +7,17 @@ export function NewsSection({ primaryButtonClass }: NewsSectionProps) {
     <section id="noticias" className="animate-fade-in-soft scroll-mt-24 rounded-xl bg-gradient-to-b from-white via-amber-50/30 to-slate-50 p-5 shadow-md md:p-10 lg:p-11">
       <h2 className="mb-2 font-serif text-2xl font-semibold text-slate-900 md:text-3xl">Noticias y Eventos</h2>
       <p className="mb-5 max-w-2xl text-sm leading-relaxed text-slate-700 md:mb-6 md:text-base">
-        Mantente al día con las celebraciones y encuentros de nuestra comunidad parroquial.
+        Mantente al día con las celebraciones y encuentros de nuestra comunidad franciscana conventual.
       </p>
 
       <div className="space-y-4">
         <article className="rounded-xl border border-amber-300 bg-amber-50 p-4 shadow-sm ring-1 ring-amber-200 md:p-6">
           <div className="flex flex-col gap-3 sm:flex-row sm:items-start sm:justify-between">
             <div>
-              <h3 className="font-serif text-lg font-semibold text-slate-900 md:text-xl">Triduo Pascual</h3>
+              <h3 className="font-serif text-lg font-semibold text-slate-900 md:text-xl">Papa León XIV proclama Año Jubilar Franciscano
+por el 800 aniversario del tránsito de San Francisco de Asís</h3>
               <p className="text-sm leading-relaxed text-slate-700 md:text-base">
-                Acompáñanos en la celebración más importante del año cristiano.
+                Acompáñanos en la celebración más importante de la vida franciscana.
               </p>
             </div>
             <span className="inline-flex items-center rounded-full bg-amber-300 px-3 py-1 text-xs font-semibold text-slate-900">Próximo</span>

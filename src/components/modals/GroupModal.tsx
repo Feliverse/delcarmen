@@ -15,7 +15,7 @@ export function GroupModal({ group, onClose, whatsappLink }: GroupModalProps) {
         <div className="flex h-full flex-col" onClick={(event) => event.stopPropagation()}>
           <div className="flex items-center justify-between gap-3 border-b border-amber-300/60 bg-amber-50 px-4 py-3 md:px-6 md:py-4">
             <div className="min-w-0">
-              <p className="mb-1 text-xs font-semibold uppercase tracking-wide text-slate-700">Grupo parroquial</p>
+              <p className="mb-1 text-xs font-semibold uppercase tracking-wide text-slate-700">Grupo franciscano conventual</p>
               <h3 className="min-w-0 break-words font-serif text-xl font-semibold text-slate-900 sm:text-2xl md:text-3xl">{group.name}</h3>
             </div>
             <button

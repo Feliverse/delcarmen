@@ -82,19 +82,19 @@ export function HeroSection() {
         <div className="animate-fade-in-soft w-full space-y-4 px-4 md:space-y-6 md:px-10 md:pt-14 lg:pt-16">
           {heroLogoMissing ? (
             <h1 className="font-serif text-3xl font-bold leading-tight text-white md:text-5xl lg:text-6xl">
-              Parroquia Nuestra Señora del Carmen<br />y San Maximiliano Kolbe
+              Parroquia de Quintanilla<br />Nuestra Señora del Carmen y San Maximiliano Kolbe
             </h1>
           ) : (
             <img
               src={currentHeroLogo}
-              alt="Logotipo tipográfico de la parroquia"
+              alt="Logotipo tipográfico de la Parroquia de Quintanilla"
               className="mx-auto max-h-80 w-full max-w-4xl object-contain md:mx-0 md:max-h-40 lg:-ml-64"
               onError={() => setHeroLogoMissing(true)}
             />
           )}
           <p className="text-center font-serif text-3xl text-white md:text-6xl">Jubileo Franciscano</p>
           <p className="mx-auto max-w-2xl text-center text-lg leading-relaxed text-white/95 md:text-xl">
-            Por los 800 años del transito de San Francisco de Asis<br />(1226-2026)
+            Por los 800 años del tránsito de San Francisco de Asís<br />(1226-2026)
           </p>
 
           <div className="mx-auto mt-4 flex w-full max-w-sm flex-col items-center gap-3 rounded-lg border border-white/30 bg-slate-950/70 px-4 py-3 text-center shadow-lg backdrop-blur-sm md:mx-0 md:inline-flex md:w-auto md:max-w-none md:flex-row md:items-center md:gap-4 md:text-left">

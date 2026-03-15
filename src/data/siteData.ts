@@ -1,4 +1,4 @@
-import type { InterestLink, NavLink, ParishGroup } from '../types/site';
+import type { Chapel, InterestLink, NavLink, ParishGroup } from '../types/site';
 
 export const NAV_LINKS: NavLink[] = [
   { label: 'Inicio', href: '#hero' },
@@ -7,12 +7,13 @@ export const NAV_LINKS: NavLink[] = [
   { label: 'Trámites', href: '#tramites' },
   { label: 'Noticias', href: '#noticias' },
   { label: 'Grupos', href: '#grupos' },
+  { label: 'Capillas', href: '#capillas' },
   { label: 'Contacto', href: '#contacto' },
 ];
 
 export const FORM_SPREE_ENDPOINT = import.meta.env.VITE_FORMSPREE_ENDPOINT || 'https://formspree.io/f/tu_form_id';
-export const WHATSAPP_NUMBER = import.meta.env.VITE_WHATSAPP_NUMBER || '59100000000';
-export const WHATSAPP_MESSAGE = 'Hola, me gustaría recibir más información de la parroquia.';
+export const WHATSAPP_NUMBER = import.meta.env.VITE_WHATSAPP_NUMBER || '59164971674';
+export const WHATSAPP_MESSAGE = 'Hola, me gustaría recibir más información de la Parroquia de Quintanilla.';
 export const WHATSAPP_LINK = `https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent(WHATSAPP_MESSAGE)}`;
 export const PARISH_FACEBOOK_URL = import.meta.env.VITE_PARISH_FACEBOOK_URL || 'https://www.facebook.com/';
 
@@ -22,7 +23,7 @@ export const INTEREST_LINKS: InterestLink[] = [
     href: import.meta.env.VITE_ARQ_CBBA_URL || 'https://arquidiocesiscochabamba.org/',
   },
   {
-    label: 'OFM Bolivia',
+    label: 'Frailes Menores Conventuales en Bolivia',
     href: import.meta.env.VITE_OFM_BOLIVIA_URL || 'https://ofmbolivia.org/',
   },
   {
@@ -53,17 +54,17 @@ export const GROUPS: ParishGroup[] = [
     image: `${basePath}hero-carousel/slide-2.jpg`,
   },
   {
-    name: 'Ministerio de Musica',
+    name: 'Ministerio de Música',
     shortDescription: 'Alabanza en las celebraciones',
     description:
       'Animamos la liturgia con canto y música para ayudar a la asamblea a vivir la oración comunitaria con alegría, respeto y espíritu de servicio.',
     image: `${basePath}hero-carousel/slide-3.jpg`,
   },
   {
-    name: 'Ministerio de Liturgia',
-    shortDescription: 'Monaguillos',
+    name: 'Milicia de la inmaculada',
+    shortDescription: 'Consagración total a la Inmaculada.',
     description:
-      'Servimos en la celebración litúrgica formando monaguillos y colaboradores que cuidan cada detalle para que la Eucaristía se viva con orden y profundidad.',
+      'La Milicia de la Inmaculada (MI) es un movimiento apostólico internacional de la Iglesia Católica fundado por San Maximiliano Kolbe en 1917. Su objetivo es la conversión de los pecadores y la santificación de todos bajo la protección de María Inmaculada, mediante la consagración total a Ella y el uso de medios modernos.',
     image: `${basePath}hero-carousel/slide-1.png`,
   },
   {
@@ -79,5 +80,96 @@ export const GROUPS: ParishGroup[] = [
     description:
       'Comunidad de iniciación cristiana que promueve el encuentro con Cristo, la conversión y la vivencia de la fe en comunidad y misión.',
     image: `${basePath}hero-carousel/slide-3.jpg`,
+  },
+];
+
+export const CHAPELS: Chapel[] = [
+  {
+    name: 'Comunidad de Abra',
+    location: 'OTB Candelaria',
+    patroness: 'Virgen de Candelaria',
+    feast: '2 de enero',
+    masses: 'Domingos a las 10:00',
+    pastoral: ['Grupo de Monaguillos', 'Grupo de música', 'Primera Comunión y Confirmación)'],
+    image: `${basePath}chapels/abra.jpg`,
+  },
+  {
+    name: 'Comunidad de Puntiti',
+    location: 'Zona Puntiti – Km 5 Av. Villazón (norte)',
+    patroness: 'Virgen de la Inmaculada Concepción',
+    feast: '8 de diciembre',
+    masses: 'Domingos a las 8:00',
+    pastoral: [
+      'Grupo de Monaguillos',
+      'Coros de música',
+      'Primera Comunión y Confirmación',
+      'Pastoral Juvenil',
+      'Pastoral de Lectores',
+      'Catequesis con padres de familia',
+    ],
+    image: `${basePath}chapels/puntiti.jpg`,
+  },
+  {
+    name: 'Comunidad de Chacacollo',
+    location: 'Zona Chacacollo – Km 5 Av. Chapare',
+    patroness: 'Virgen de Copacabana',
+    feast: '6 de agosto',
+    masses: 'Domingos a las 8:00',
+    pastoral: [
+      'Coro de música',
+      'Catequistas de Primera Comunión y Confirmación',
+      'Catequesis familiar',
+      'Grupo de la Milicia de la Inmaculada',
+      'Catequesis mensual con padres de familia',
+      'Visitas domiciliarias en novena a la Virgen para rezar el rosario',
+    ],
+    image: `${basePath}chapels/chacacollo.jpg`,
+  },
+  {
+    name: 'Comunidad de Magisterio',
+    location: 'Barrio Magisterio – Km 2 Av. Chapare',
+    patroness: 'Virgen de Luján',
+    feast: '8 de mayo',
+    masses: 'Domingos a las 9:00',
+    pastoral: [
+      'Grupo de Monaguillos',
+      'Catequistas de Primera Comunión y Confirmación',
+      'Catequesis con padres de familia',
+    ],
+    image: `${basePath}chapels/magisterio.jpg`,
+  },
+  {
+    name: 'Comunidad de Pucará',
+    location: 'Zona Pucará',
+    patroness: 'Virgen de Santa Rosa de Lima',
+    feast: '24 de agosto',
+    masses: 'Último domingo del mes a las 9:00',
+    pastoral: [
+      'Primera Comunión y Confirmación',
+      'Visitas domiciliarias navideñas con el Niño Jesús',
+    ],
+    image: `${basePath}chapels/pucara.jpg`,
+  },
+  {
+    name: 'Capilla del Surtidor Anita',
+    location: 'Km 5 Av. Villazón',
+    patroness: 'Virgen de Urkupiña',
+    feast: '',
+    masses: 'Segundo domingo del mes a las 9:00',
+    pastoral: [],
+    image: `${basePath}chapels/surtidor-anita.jpg`,
+  },
+  {
+    name: 'Comunidad de Esmeralda',
+    location: 'Zona Esmeralda – Calle Gualberto Villarroel',
+    patroness: 'Virgen del Carmen',
+    feast: '16 de julio',
+    masses: 'Domingos a las 7:00',
+    pastoral: [
+      'Grupo de Monaguillos',
+      'Catequesis de Primera Comunión y Confirmación',
+      'Visitas domiciliarias en novena a la Virgen para rezar el rosario',
+    ],
+    image: `${basePath}chapels/esmeralda.jpg`,
   },
 ];
