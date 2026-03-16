@@ -13,6 +13,7 @@ export type ParishGroup = {
   shortDescription: string;
   description: string;
   image: string;
+  whatsappNumber?: string;
 };
 
 export type Chapel = {

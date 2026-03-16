@@ -5,6 +5,7 @@ export {
   WHATSAPP_LINK,
   PARISH_FACEBOOK_URL,
   INTEREST_LINKS,
+  DONATIONS_QR_IMAGE,
   GROUPS,
   CHAPELS,
 } from './siteData';

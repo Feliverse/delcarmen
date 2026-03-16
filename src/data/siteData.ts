@@ -37,6 +37,7 @@ export const INTEREST_LINKS: InterestLink[] = [
 ];
 
 const basePath = import.meta.env.BASE_URL;
+export const DONATIONS_QR_IMAGE = import.meta.env.VITE_DONATIONS_QR_IMAGE || `${basePath}donaciones/qr-parroquia.jpg`;
 
 export const GROUPS: ParishGroup[] = [
   {
@@ -44,42 +45,46 @@ export const GROUPS: ParishGroup[] = [
     shortDescription: 'Preparación de niños y jóvenes',
     description:
       'Acompañamos a niños y jóvenes en su formación cristiana, preparándolos para recibir los sacramentos y crecer en una fe viva dentro de la comunidad.',
-    image: `${basePath}hero-carousel/slide-1.png`,
+    image: `${basePath}groups/catequesis.jpg`,
   },
   {
     name: 'Pastoral Familiar',
     shortDescription: 'Preparación prematrimonial',
     description:
       'Fortalecemos la vida matrimonial y familiar con espacios de formación, escucha y acompañamiento espiritual para novios, matrimonios y padres de familia.',
-    image: `${basePath}hero-carousel/slide-2.jpg`,
+    image: `${basePath}groups/familiar.png`,
   },
   {
     name: 'Ministerio de Música',
     shortDescription: 'Alabanza en las celebraciones',
     description:
       'Animamos la liturgia con canto y música para ayudar a la asamblea a vivir la oración comunitaria con alegría, respeto y espíritu de servicio.',
-    image: `${basePath}hero-carousel/slide-3.jpg`,
+    image: `${basePath}groups/musica.jpg`,
   },
   {
     name: 'Milicia de la inmaculada',
     shortDescription: 'Consagración total a la Inmaculada.',
     description:
       'La Milicia de la Inmaculada (MI) es un movimiento apostólico internacional de la Iglesia Católica fundado por San Maximiliano Kolbe en 1917. Su objetivo es la conversión de los pecadores y la santificación de todos bajo la protección de María Inmaculada, mediante la consagración total a Ella y el uso de medios modernos.',
-    image: `${basePath}hero-carousel/slide-1.png`,
+    image: `${basePath}groups/milicia.png`,
   },
   {
     name: 'JUFRA - Juventudes Franciscanas',
     shortDescription: 'Para jóvenes de 14-35 años',
     description:
-      'Espacio juvenil franciscano para crecer en fraternidad, servicio y misión, inspirados en San Francisco de Asís y comprometidos con la Iglesia.',
-    image: `${basePath}hero-carousel/slide-2.jpg`,
+      `Invitamos a todos los jóvenes de Cochabamba a unirse a la Jufra Santa María de los Ángeles - Quintanilla; si eres un joven alegre, amable🫂, amas la naturaleza🌱 y con ganas de servir al Señor, ven y sé parte de esta hermosa fraternidad.🤍
+nos reunimos en la Parroquia Nuestra Señora del Carmen y San Maximiliano Kolbe, en Quintanilla, Cochabamba, todos los sábados a las 17:00 en los salones parroquiales.
+Informaciones: 77961859 (Animador)
+#Jufra #jovenes #fraternidad`,
+    image: `${basePath}groups/jufra.jpg`,
+  whatsappNumber: '77961859',
   },
   {
     name: 'Movimiento Neocatecumenal',
     shortDescription: 'Servicio a los pobres y necesitados',
     description:
       'Comunidad de iniciación cristiana que promueve el encuentro con Cristo, la conversión y la vivencia de la fe en comunidad y misión.',
-    image: `${basePath}hero-carousel/slide-3.jpg`,
+    image: `${basePath}groups/neocatecumenal.webp`,
   },
 ];
 

@@ -26,6 +26,9 @@ export function GroupsSection({ groups, whatsappLink }: GroupsSectionProps) {
       <div className="space-y-3">
         {groups.map((grupo, index) => {
           const isOpen = openIndex === index;
+          const groupWhatsappLink = grupo.whatsappNumber
+            ? `https://wa.me/${grupo.whatsappNumber}`
+            : whatsappLink;
 
           return (
             <article key={grupo.name} className="overflow-hidden rounded-xl border border-slate-200 bg-white shadow-sm ring-1 ring-slate-200/70">
@@ -50,7 +53,7 @@ export function GroupsSection({ groups, whatsappLink }: GroupsSectionProps) {
                   <div>
                     <p className="text-sm leading-relaxed text-slate-700 md:text-base">{grupo.description}</p>
                     <a
-                      href={whatsappLink}
+                      href={groupWhatsappLink}
                       target="_blank"
                       rel="noreferrer"
                       className="mt-4 inline-flex min-h-10 items-center justify-center rounded-md border border-amber-300 bg-amber-300 px-4 py-2 text-sm font-semibold text-slate-900 transition hover:bg-amber-200"

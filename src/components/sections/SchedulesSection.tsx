@@ -13,11 +13,7 @@ export function SchedulesSection() {
           <h3 className="mb-3 font-serif text-lg font-semibold text-conventual-habit md:text-xl">Misas</h3>
           <ul className="space-y-2 text-sm leading-relaxed text-conventual-ash md:text-base">
             <li className="flex flex-col gap-2 rounded-lg border border-amber-200 bg-white px-3 py-2 sm:flex-row sm:items-center sm:justify-between">
-              <span className="font-medium text-conventual-habit">Lunes a Viernes</span>
-              <span className="font-semibold text-conventual-habit">6:30 a. m., 7:00 p. m.</span>
-            </li>
-            <li className="flex flex-col gap-2 rounded-lg border border-amber-200 bg-white px-3 py-2 sm:flex-row sm:items-center sm:justify-between">
-              <span className="font-medium text-conventual-habit">Sábados</span>
+              <span className="font-medium text-conventual-habit">Lunes a sabado</span>
               <span className="font-semibold text-conventual-habit">6:30 a. m., 7:00 p. m.</span>
             </li>
             <li className="flex flex-col gap-2 rounded-lg border border-amber-200 bg-white px-3 py-2 sm:flex-row sm:items-center sm:justify-between">
@@ -31,8 +27,8 @@ export function SchedulesSection() {
           <h3 className="mb-3 font-serif text-lg font-semibold text-conventual-habit md:text-xl">Confesiones</h3>
           <ul className="space-y-2 text-sm leading-relaxed text-conventual-ash md:text-base">
             <li className="flex flex-col gap-2 rounded-lg border border-slate-200 bg-white px-3 py-2 sm:flex-row sm:items-center sm:justify-between">
-              <span className="font-medium text-conventual-habit">Lunes a Viernes</span>
-              <span className="font-semibold text-conventual-habit">6:30 a. m. a 7:00 p. m.</span>
+              <span className="font-medium text-conventual-habit">Miercoles y viernes</span>
+              <span className="font-semibold text-conventual-habit">18:30 p. m.</span>
             </li>
           </ul>
         </article>

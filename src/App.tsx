@@ -2,7 +2,7 @@ import { useEffect, useState } from 'react';
 import { getDailyGospel, getDailyInspirationalMessage } from './services';
 import type { BiblePassage } from './services';
 import { Footer, Navbar } from './components/layout';
-import { ChapelModal } from './components/modals';
+import { ChapelModal, DonationsModal } from './components/modals';
 import {
   ContactSection,
   ChapelsSection,
@@ -15,6 +15,7 @@ import {
 } from './components/sections';
 import {
   CHAPELS,
+  DONATIONS_QR_IMAGE,
   FORM_SPREE_ENDPOINT,
   GROUPS,
   INTEREST_LINKS,
@@ -35,6 +36,7 @@ function App() {
   const [messageLoading, setMessageLoading] = useState(false);
   const [messageError, setMessageError] = useState<string | null>(null);
   const [selectedChapel, setSelectedChapel] = useState<Chapel | null>(null);
+  const [showDonationsModal, setShowDonationsModal] = useState(false);
 
   const handleGetGospel = async () => {
     if (showGospel) {
@@ -114,7 +116,7 @@ function App() {
     'inline-flex min-h-10 items-center justify-center rounded-md bg-conventual-habit px-4 py-2 text-sm font-medium text-conventual-light transition hover:bg-conventual-ash hover:text-white disabled:cursor-not-allowed disabled:opacity-70';
 
   useEffect(() => {
-    if (!selectedChapel) return;
+    if (!selectedChapel && !showDonationsModal) return;
 
     const previousOverflow = document.body.style.overflow;
     document.body.style.overflow = 'hidden';
@@ -122,6 +124,7 @@ function App() {
     const onKeyDown = (event: KeyboardEvent) => {
       if (event.key === 'Escape') {
         setSelectedChapel(null);
+        setShowDonationsModal(false);
       }
     };
 
@@ -131,11 +134,11 @@ function App() {
       document.body.style.overflow = previousOverflow;
       window.removeEventListener('keydown', onKeyDown);
     };
-  }, [selectedChapel]);
+  }, [selectedChapel, showDonationsModal]);
 
   return (
     <div className="min-h-screen bg-conventual-light text-conventual-habit">
-      <Navbar links={NAV_LINKS} />
+      <Navbar links={NAV_LINKS} onOpenDonations={() => setShowDonationsModal(true)} />
       <HeroSection />
 
       <main className="mx-auto max-w-5xl space-y-10 px-4 py-10 sm:px-5 md:space-y-14 md:py-14 lg:space-y-16 lg:py-16">
@@ -164,6 +167,13 @@ function App() {
           primaryButtonClass={primaryButtonClass}
         />
       </main>
+
+      {showDonationsModal && (
+        <DonationsModal
+          qrImage={DONATIONS_QR_IMAGE}
+          onClose={() => setShowDonationsModal(false)}
+        />
+      )}
 
       {selectedChapel && (
         <ChapelModal

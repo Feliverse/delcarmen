@@ -3,9 +3,10 @@ import type { NavLink } from '../../types/site';
 
 type NavbarProps = {
   links: NavLink[];
+  onOpenDonations: () => void;
 };
 
-export function Navbar({ links }: NavbarProps) {
+export function Navbar({ links, onOpenDonations }: NavbarProps) {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const [activeHref, setActiveHref] = useState('#hero');
 
@@ -67,7 +68,23 @@ export function Navbar({ links }: NavbarProps) {
     >
       <div className="mx-auto max-w-5xl px-4 py-4 text-white">
         <div className="flex items-center justify-end">
-          <div className="hidden items-center gap-2 rounded-full border border-white/20 bg-slate-900/45 p-1.5 md:flex">
+          <div className="hidden items-center gap-2 md:flex">
+            <button
+              type="button"
+              onClick={onOpenDonations}
+              className="inline-flex min-h-10 items-center justify-center gap-2 rounded-full bg-amber-300 px-4 py-1.5 text-sm font-semibold text-slate-900 shadow-sm transition hover:bg-amber-200"
+            >
+              <svg
+                aria-hidden="true"
+                viewBox="0 0 24 24"
+                className="h-4 w-4"
+                fill="currentColor"
+              >
+                <path d="M2 12a1 1 0 0 1 1-1h4.38a1 1 0 0 1 .8.4l1.1 1.47a1 1 0 0 0 .8.4h2.2a1 1 0 0 1 .8.4l.93 1.24a1 1 0 0 0 1.42.18l3.95-3.16a1 1 0 0 1 1.24 1.57l-3.95 3.16a3 3 0 0 1-4.27-.56l-.63-.83h-1.7a3 3 0 0 1-2.4-1.2L6.88 13H3a1 1 0 0 1-1-1Zm16.5-7A2.5 2.5 0 0 0 16 7.5v.22l-.16-.15a3.49 3.49 0 0 0-4.93 0 3.5 3.5 0 0 0 0 4.95L16 17.6l5.1-5.08A3.5 3.5 0 0 0 18.5 5Z" />
+              </svg>
+              Donaciones QR
+            </button>
+            <div className="hidden items-center gap-2 rounded-full border border-white/20 bg-slate-900/45 p-1.5 md:flex">
             {links.map((link) => (
               <a
                 key={link.href}
@@ -82,6 +99,7 @@ export function Navbar({ links }: NavbarProps) {
                 {link.label}
               </a>
             ))}
+            </div>
           </div>
 
           <button
@@ -104,6 +122,29 @@ export function Navbar({ links }: NavbarProps) {
           }`}
         >
           <div className="mx-auto flex h-full max-w-sm flex-col items-stretch justify-center gap-3 px-6 pb-12">
+            <button
+              type="button"
+              tabIndex={mobileMenuOpen ? 0 : -1}
+              className={`block rounded-lg bg-amber-300 px-4 py-3 text-center text-lg font-semibold text-slate-900 shadow-sm transition hover:bg-amber-200 ${
+                mobileMenuOpen ? 'animate-donate-soft' : ''
+              }`}
+              onClick={() => {
+                onOpenDonations();
+                setMobileMenuOpen(false);
+              }}
+            >
+              <span className="inline-flex items-center gap-2">
+                <svg
+                  aria-hidden="true"
+                  viewBox="0 0 24 24"
+                  className="h-5 w-5"
+                  fill="currentColor"
+                >
+                  <path d="M2 12a1 1 0 0 1 1-1h4.38a1 1 0 0 1 .8.4l1.1 1.47a1 1 0 0 0 .8.4h2.2a1 1 0 0 1 .8.4l.93 1.24a1 1 0 0 0 1.42.18l3.95-3.16a1 1 0 0 1 1.24 1.57l-3.95 3.16a3 3 0 0 1-4.27-.56l-.63-.83h-1.7a3 3 0 0 1-2.4-1.2L6.88 13H3a1 1 0 0 1-1-1Zm16.5-7A2.5 2.5 0 0 0 16 7.5v.22l-.16-.15a3.49 3.49 0 0 0-4.93 0 3.5 3.5 0 0 0 0 4.95L16 17.6l5.1-5.08A3.5 3.5 0 0 0 18.5 5Z" />
+                </svg>
+                Donaciones QR
+              </span>
+            </button>
             {links.map((link) => (
               <a
                 key={link.href}
