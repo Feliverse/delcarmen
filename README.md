@@ -75,6 +75,12 @@ Configura estas variables en `.env`:
 - `VITE_BIBLE_API_BASE`: base URL (por defecto `https://rest.api.bible/v1`).
 - `VITE_BIBLE_ID`: traducción de Biblia (por defecto `48acedcf8595c754-01`).
 
+### Analítica
+
+- `VITE_GA_ID`: identificador de Google Analytics 4 (ejemplo `G-XXXXXXXXXX`).
+
+> Si no configuras `VITE_GA_ID`, Analytics no se inicializa.
+
 ### Contacto
 
 - `VITE_FORMSPREE_ENDPOINT`: endpoint de Formspree.

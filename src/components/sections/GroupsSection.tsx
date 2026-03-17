@@ -6,9 +6,10 @@ import type { ParishGroup } from '../../types/site';
 type GroupsSectionProps = {
   groups: ParishGroup[];
   whatsappLink: string;
+  onWhatsappClick?: (groupName: string) => void;
 };
 
-export function GroupsSection({ groups, whatsappLink }: GroupsSectionProps) {
+export function GroupsSection({ groups, whatsappLink, onWhatsappClick }: GroupsSectionProps) {
   const [openIndex, setOpenIndex] = useState<number | null>(0);
 
   const toggleGroup = (index: number) => {
@@ -56,6 +57,7 @@ export function GroupsSection({ groups, whatsappLink }: GroupsSectionProps) {
                       href={groupWhatsappLink}
                       target="_blank"
                       rel="noreferrer"
+                      onClick={() => onWhatsappClick?.(grupo.name)}
                       className="mt-4 inline-flex min-h-10 items-center justify-center rounded-md border border-amber-300 bg-amber-300 px-4 py-2 text-sm font-semibold text-slate-900 transition hover:bg-amber-200"
                     >
                       <FontAwesomeIcon icon={faWhatsapp} className="mr-2 text-base" />

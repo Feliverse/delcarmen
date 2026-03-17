@@ -1,5 +1,10 @@
 import { useEffect, useState } from 'react';
-import { getDailyGospel, getDailyInspirationalMessage } from './services';
+import {
+  getDailyGospel,
+  getDailyInspirationalMessage,
+  initializeAnalytics,
+  trackEvent,
+} from './services';
 import type { BiblePassage } from './services';
 import { Footer, Navbar } from './components/layout';
 import { ChapelModal, DonationsModal } from './components/modals';
@@ -115,6 +120,30 @@ function App() {
   const primaryButtonClass =
     'inline-flex min-h-10 items-center justify-center rounded-md bg-conventual-habit px-4 py-2 text-sm font-medium text-conventual-light transition hover:bg-conventual-ash hover:text-white disabled:cursor-not-allowed disabled:opacity-70';
 
+  const handleOpenDonations = (source: 'desktop' | 'mobile') => {
+    trackEvent('open_donations_modal', { source });
+    setShowDonationsModal(true);
+  };
+
+  const handleContactWhatsappClick = () => {
+    trackEvent('click_whatsapp', { section: 'contacto' });
+  };
+
+  const handleGroupWhatsappClick = (groupName: string) => {
+    trackEvent('click_group_whatsapp', {
+      section: 'grupos',
+      group_name: groupName,
+    });
+  };
+
+  const handleContactFormSubmit = () => {
+    trackEvent('submit_contact_form', { section: 'contacto' });
+  };
+
+  useEffect(() => {
+    initializeAnalytics();
+  }, []);
+
   useEffect(() => {
     if (!selectedChapel && !showDonationsModal) return;
 
@@ -138,7 +167,7 @@ function App() {
 
   return (
     <div className="min-h-screen bg-conventual-light text-conventual-habit">
-      <Navbar links={NAV_LINKS} onOpenDonations={() => setShowDonationsModal(true)} />
+      <Navbar links={NAV_LINKS} onOpenDonations={handleOpenDonations} />
       <HeroSection />
 
       <main className="mx-auto max-w-5xl space-y-10 px-4 py-10 sm:px-5 md:space-y-14 md:py-14 lg:space-y-16 lg:py-16">
@@ -159,12 +188,18 @@ function App() {
         <SchedulesSection />
         <ProceduresSection />
         <NewsSection primaryButtonClass={primaryButtonClass} />
-        <GroupsSection groups={GROUPS} whatsappLink={WHATSAPP_LINK} />
+        <GroupsSection
+          groups={GROUPS}
+          whatsappLink={WHATSAPP_LINK}
+          onWhatsappClick={handleGroupWhatsappClick}
+        />
         <ChapelsSection chapels={CHAPELS} onSelectChapel={setSelectedChapel} />
         <ContactSection
           formspreeEndpoint={FORM_SPREE_ENDPOINT}
           whatsappLink={WHATSAPP_LINK}
           primaryButtonClass={primaryButtonClass}
+          onWhatsappClick={handleContactWhatsappClick}
+          onContactFormSubmit={handleContactFormSubmit}
         />
       </main>
 

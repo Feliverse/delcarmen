@@ -3,7 +3,7 @@ import type { NavLink } from '../../types/site';
 
 type NavbarProps = {
   links: NavLink[];
-  onOpenDonations: () => void;
+  onOpenDonations: (source: 'desktop' | 'mobile') => void;
 };
 
 export function Navbar({ links, onOpenDonations }: NavbarProps) {
@@ -71,7 +71,7 @@ export function Navbar({ links, onOpenDonations }: NavbarProps) {
           <div className="hidden items-center gap-2 md:flex">
             <button
               type="button"
-              onClick={onOpenDonations}
+              onClick={() => onOpenDonations('desktop')}
               className="inline-flex min-h-10 items-center justify-center gap-2 rounded-full bg-amber-300 px-4 py-1.5 text-sm font-semibold text-slate-900 shadow-sm transition hover:bg-amber-200"
             >
               <svg
@@ -129,7 +129,7 @@ export function Navbar({ links, onOpenDonations }: NavbarProps) {
                 mobileMenuOpen ? 'animate-donate-soft' : ''
               }`}
               onClick={() => {
-                onOpenDonations();
+                onOpenDonations('mobile');
                 setMobileMenuOpen(false);
               }}
             >

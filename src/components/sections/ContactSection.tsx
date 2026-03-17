@@ -5,9 +5,17 @@ type ContactSectionProps = {
   formspreeEndpoint: string;
   whatsappLink: string;
   primaryButtonClass: string;
+  onWhatsappClick?: () => void;
+  onContactFormSubmit?: () => void;
 };
 
-export function ContactSection({ formspreeEndpoint, whatsappLink, primaryButtonClass }: ContactSectionProps) {
+export function ContactSection({
+  formspreeEndpoint,
+  whatsappLink,
+  primaryButtonClass,
+  onWhatsappClick,
+  onContactFormSubmit,
+}: ContactSectionProps) {
   return (
     <section id="contacto" className="animate-fade-in-soft scroll-mt-24 rounded-xl bg-gradient-to-br from-slate-700 via-slate-600 to-slate-800 p-5 text-slate-100 shadow-md md:p-10 lg:p-11">
       <h2 className="mb-2 font-serif text-2xl font-semibold text-slate-50 md:text-3xl">Contacto</h2>
@@ -35,6 +43,7 @@ export function ContactSection({ formspreeEndpoint, whatsappLink, primaryButtonC
               href={whatsappLink}
               target="_blank"
               rel="noreferrer"
+              onClick={onWhatsappClick}
               className="mt-4 inline-flex min-h-10 w-full items-center justify-center rounded-md border border-amber-300 bg-amber-300 px-4 py-2 text-sm font-semibold text-slate-900 transition hover:bg-amber-200 md:w-auto"
             >
               <FontAwesomeIcon icon={faWhatsapp} className="mr-2 text-base" />
@@ -43,7 +52,12 @@ export function ContactSection({ formspreeEndpoint, whatsappLink, primaryButtonC
           </div>
         </div>
 
-        <form action={formspreeEndpoint} method="POST" className="rounded-xl border border-amber-300/45 bg-amber-50 p-4 text-slate-900 shadow-sm ring-1 ring-amber-200/60 md:p-6">
+        <form
+          action={formspreeEndpoint}
+          method="POST"
+          onSubmit={onContactFormSubmit}
+          className="rounded-xl border border-amber-300/45 bg-amber-50 p-4 text-slate-900 shadow-sm ring-1 ring-amber-200/60 md:p-6"
+        >
           <div className="grid gap-5">
             <p className="text-sm leading-relaxed text-slate-700 md:text-base">
               Nos alegrará escucharte. Escríbenos con confianza y con gusto te responderemos lo antes posible.
