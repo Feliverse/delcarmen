@@ -1,0 +1,23 @@
+# Robots.txt - Parroquia de Quintanilla
+# https://pdelcarmen.org/robots.txt
+
+User-agent: *
+Allow: /
+Disallow: /node_modules/
+Disallow: /dist/
+Disallow: /build/
+Disallow: /*.js.map
+Disallow: /*.css.map
+
+# Specific rules for search engines
+User-agent: Googlebot
+Allow: /
+
+User-agent: Bingbot
+Allow: /
+
+# Crawl delay
+Crawl-delay: 1
+
+# Sitemap location
+Sitemap: https://pdelcarmen.org/sitemap.xml
