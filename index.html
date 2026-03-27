@@ -37,6 +37,11 @@
     <meta name="robots" content="index, follow, max-snippet:-1, max-image-preview:large, max-video-preview:-1" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="language" content="Spanish" />
+
+    <!-- Performance Hints -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link rel="preload" as="image" href="/hero-carousel/slide-1.png" fetchpriority="high" />
     
     <!-- Fonts -->
     <link href="https://fonts.googleapis.com/css2?family=Crimson+Text:ital@0;1&display=swap" rel="stylesheet" />
@@ -45,100 +50,68 @@
     <script type="application/ld+json">
     {
       "@context": "https://schema.org",
-      "@type": "LocalBusiness",
-      "name": "Parroquia Nuestra Señora del Carmen y San Maximiliano Kolbe",
-      "image": "https://pdelcarmen.org/og-image.jpg",
-      "description": "Parroquia Nuestra Señora del Carmen y San Maximiliano Kolbe ubicada en Quintanilla, Cochabamba. Comunidad católica atendida por los Frailes Menores Conventuales.",
-      "url": "https://pdelcarmen.org/",
-      "telephone": "+591-64971674",
-      "contactPoint": {
-        "@type": "ContactPoint",
-        "contactType": "Parish Communications",
-        "telephone": "+591-64971674",
-        "contactOption": "TollFree"
-      },
-      "address": {
-        "@type": "PostalAddress",
-        "streetAddress": "Quintanilla",
-        "addressLocality": "Cochabamba",
-        "addressCountry": "BO"
-      },
-      "geo": {
-        "@type": "GeoCoordinates",
-        "latitude": "-17.3932",
-        "longitude": "-66.1516"
-      },
-      "sameAs": [
-        "https://www.facebook.com/"
-      ],
-      "openingHoursSpecification": [
+      "@graph": [
         {
-          "@type": "OpeningHoursSpecification",
-          "dayOfWeek": "Sunday",
-          "opens": "09:00",
-          "closes": "12:00"
+          "@type": "Organization",
+          "@id": "https://pdelcarmen.org/#organization",
+          "name": "Parroquia Nuestra Se\u00f1ora del Carmen y San Maximiliano Kolbe",
+          "url": "https://pdelcarmen.org/",
+          "logo": "https://pdelcarmen.org/og-image.jpg",
+          "description": "Parroquia cat\u00f3lica ubicada en Quintanilla, Cochabamba, atendida por los Frailes Menores Conventuales.",
+          "sameAs": [
+            "https://www.facebook.com/"
+          ],
+          "contactPoint": {
+            "@type": "ContactPoint",
+            "contactType": "Parish Communications",
+            "telephone": "+59164971674",
+            "availableLanguage": ["es"]
+          }
         },
         {
-          "@type": "OpeningHoursSpecification",
-          "dayOfWeek": "Monday",
-          "opens": "10:00",
-          "closes": "11:30"
-        },
-        {
-          "@type": "OpeningHoursSpecification",
-          "dayOfWeek": "Tuesday",
-          "opens": "10:00",
-          "closes": "11:30"
-        },
-        {
-          "@type": "OpeningHoursSpecification",
-          "dayOfWeek": "Wednesday",
-          "opens": "10:00",
-          "closes": "11:30"
-        },
-        {
-          "@type": "OpeningHoursSpecification",
-          "dayOfWeek": "Thursday",
-          "opens": "10:00",
-          "closes": "11:30"
-        },
-        {
-          "@type": "OpeningHoursSpecification",
-          "dayOfWeek": "Friday",
-          "opens": "10:00",
-          "closes": "11:30"
-        },
-        {
-          "@type": "OpeningHoursSpecification",
-          "dayOfWeek": "Saturday",
-          "opens": "10:00",
-          "closes": "17:00"
+          "@type": "PlaceOfWorship",
+          "@id": "https://pdelcarmen.org/#place",
+          "name": "Parroquia Nuestra Se\u00f1ora del Carmen y San Maximiliano Kolbe",
+          "url": "https://pdelcarmen.org/",
+          "image": "https://pdelcarmen.org/og-image.jpg",
+          "description": "Comunidad parroquial en Quintanilla, Cochabamba.",
+          "telephone": "+59164971674",
+          "address": {
+            "@type": "PostalAddress",
+            "addressLocality": "Quintanilla",
+            "addressRegion": "Cochabamba",
+            "addressCountry": "BO"
+          },
+          "geo": {
+            "@type": "GeoCoordinates",
+            "latitude": -17.3932,
+            "longitude": -66.1516
+          },
+          "openingHoursSpecification": [
+            {
+              "@type": "OpeningHoursSpecification",
+              "dayOfWeek": "Sunday",
+              "opens": "09:00",
+              "closes": "12:00"
+            },
+            {
+              "@type": "OpeningHoursSpecification",
+              "dayOfWeek": ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday"],
+              "opens": "10:00",
+              "closes": "11:30"
+            },
+            {
+              "@type": "OpeningHoursSpecification",
+              "dayOfWeek": "Saturday",
+              "opens": "10:00",
+              "closes": "17:00"
+            }
+          ],
+          "parentOrganization": {
+            "@id": "https://pdelcarmen.org/#organization"
+          }
         }
-      ],
-      "service": [
-        {
-          "@type": "Service",
-          "name": "Misas y Celebraciones",
-          "description": "Celebraciones litúrgicas y sacramentos"
-        },
-        {
-          "@type": "Service",
-          "name": "Formación Religiosa",
-          "description": "Grupos parroquiales de formación cristiana"
-        },
-        {
-          "@type": "Service",
-          "name": "Sacramentos",
-          "description": "Bautismo, Confirmación, Matrimonio, Unción de Enfermos"
-        }
-      ],
-      "priceRange": "$",
-      "organization": {
-        "@type": "Organization",
-        "name": "Frailes Menores Conventuales en Bolivia",
-        "url": "https://ofmbolivia.org/",
-        "logo": "https://pdelcarmen.org/og-image.jpg"
-      }
+      ]
     }
     </script>
   </head>

@@ -75,6 +75,8 @@ export function ChapelModal({ chapel, onClose }: ChapelModalProps) {
                 src={chapel.image}
                 alt={`Capilla ${chapel.name}`}
                 className="h-56 w-full object-cover sm:h-72 md:h-full md:min-h-64"
+                loading="lazy"
+                decoding="async"
                 onError={(e) => {
                   (e.currentTarget as HTMLImageElement).src = 'https://placehold.co/800x600/fef3c7/92400e?text=Foto+próximamente';
                 }}

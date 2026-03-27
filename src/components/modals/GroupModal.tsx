@@ -44,7 +44,13 @@ export function GroupModal({ group, onClose, whatsappLink }: GroupModalProps) {
             </div>
 
             <div className="overflow-hidden rounded-xl border border-slate-300 bg-white shadow-sm ring-1 ring-slate-200/70">
-              <img src={group.image} alt={group.name} className="h-56 w-full object-cover sm:h-72 md:h-full md:min-h-64" />
+              <img
+                src={group.image}
+                alt={group.name}
+                className="h-56 w-full object-cover sm:h-72 md:h-full md:min-h-64"
+                loading="lazy"
+                decoding="async"
+              />
             </div>
           </div>
         </div>

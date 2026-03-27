@@ -36,22 +36,29 @@ export function HeroSection() {
     setCurrentSlide((prev) => (prev + 1) % HERO_SLIDES.length);
   };
 
+  useEffect(() => {
+    const nextSlide = HERO_SLIDES[(currentSlide + 1) % HERO_SLIDES.length];
+    const img = new Image();
+    img.src = nextSlide.src;
+  }, [currentSlide, HERO_SLIDES]);
+
   return (
     <section id="hero" className="relative h-[100svh] scroll-mt-24 overflow-hidden bg-gray-900 md:h-screen">
       <div className="absolute inset-0">
-        {HERO_SLIDES.map((slide, index) => (
-          <img
-            key={slide.src}
-            src={slide.src}
-            alt={slide.alt}
-            className={`absolute inset-0 h-full w-full object-cover transition-opacity duration-700 ${index === currentSlide ? 'opacity-100' : 'opacity-0'}`}
-            onError={(event) => {
-              if (event.currentTarget.src !== FALLBACK_HERO_IMAGE) {
-                event.currentTarget.src = FALLBACK_HERO_IMAGE;
-              }
-            }}
-          />
-        ))}
+        <img
+          key={HERO_SLIDES[currentSlide].src}
+          src={HERO_SLIDES[currentSlide].src}
+          alt={HERO_SLIDES[currentSlide].alt}
+          className="absolute inset-0 h-full w-full object-cover transition-opacity duration-700"
+          loading="eager"
+          fetchPriority="high"
+          decoding="async"
+          onError={(event) => {
+            if (event.currentTarget.src !== FALLBACK_HERO_IMAGE) {
+              event.currentTarget.src = FALLBACK_HERO_IMAGE;
+            }
+          }}
+        />
       </div>
 
       <div className="absolute inset-0 bg-gradient-to-r from-black/60 via-black/50 to-black/60" />
@@ -89,6 +96,8 @@ export function HeroSection() {
               src={currentHeroLogo}
               alt="Logotipo tipográfico de la Parroquia de Quintanilla"
               className="mx-auto max-h-80 w-full max-w-4xl object-contain md:mx-0 md:max-h-40 lg:-ml-64"
+              loading="eager"
+              decoding="async"
               onError={() => setHeroLogoMissing(true)}
             />
           )}

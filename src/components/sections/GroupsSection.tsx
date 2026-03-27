@@ -65,7 +65,13 @@ export function GroupsSection({ groups, whatsappLink, onWhatsappClick }: GroupsS
                     </a>
                   </div>
                   <div className="overflow-hidden rounded-lg border border-slate-200 bg-white">
-                    <img src={grupo.image} alt={grupo.name} className="h-48 w-full object-cover md:h-full md:min-h-44" />
+                    <img
+                      src={grupo.image}
+                      alt={grupo.name}
+                      className="h-48 w-full object-cover md:h-full md:min-h-44"
+                      loading="lazy"
+                      decoding="async"
+                    />
                   </div>
                 </div>
               )}
