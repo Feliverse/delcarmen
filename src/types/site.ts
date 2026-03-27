@@ -22,6 +22,7 @@ export type Chapel = {
   patroness: string;
   feast: string;
   masses: string;
+  holyWeekSchedule?: string[];
   pastoral: string[];
   image: string;
 };

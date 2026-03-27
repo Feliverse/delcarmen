@@ -38,6 +38,11 @@ export const INTEREST_LINKS: InterestLink[] = [
 
 const basePath = import.meta.env.BASE_URL;
 export const DONATIONS_QR_IMAGE = import.meta.env.VITE_DONATIONS_QR_IMAGE || `${basePath}donaciones/qr-parroquia.jpg`;
+export const HOLY_WEEK_2026_VISIBLE_UNTIL = '2026-04-07T23:59:59';
+
+export function isHolyWeek2026Visible(referenceDate: Date = new Date()) {
+  return referenceDate.getTime() <= new Date(HOLY_WEEK_2026_VISIBLE_UNTIL).getTime();
+}
 
 export const GROUPS: ParishGroup[] = [
   {
@@ -95,6 +100,11 @@ export const CHAPELS: Chapel[] = [
     patroness: 'Virgen de Candelaria',
     feast: '2 de enero',
     masses: 'Domingos a las 10:00',
+    holyWeekSchedule: [
+      'Domingo de Ramos (29 marzo): Eucaristía 10:00',
+      'Domingo de Resurrección (5 abril): Eucaristía 10:00',
+      'Jueves Santo (2 abril): Adoración al Santísimo 20:30 en capillas',
+    ],
     pastoral: ['Grupo de Monaguillos', 'Grupo de música', 'Primera Comunión y Confirmación)'],
     image: `${basePath}chapels/abra.jpg`,
   },
@@ -104,6 +114,12 @@ export const CHAPELS: Chapel[] = [
     patroness: 'Virgen de la Inmaculada Concepción',
     feast: '8 de diciembre',
     masses: 'Domingos a las 8:00',
+    holyWeekSchedule: [
+      'Domingo de Ramos (29 marzo): Eucaristía 08:00',
+      'Sábado Santo (4 abril): Vigilia Pascual 20:15',
+      'Domingo de Resurrección (5 abril): Eucaristía 08:00',
+      'Jueves Santo (2 abril): Adoración al Santísimo 20:30 en capillas',
+    ],
     pastoral: [
       'Grupo de Monaguillos',
       'Coros de música',
@@ -120,6 +136,13 @@ export const CHAPELS: Chapel[] = [
     patroness: 'Virgen de Copacabana',
     feast: '6 de agosto',
     masses: 'Domingos a las 8:00',
+    holyWeekSchedule: [
+      'Domingo de Ramos (29 marzo): Eucaristía 08:00',
+      'Viernes Santo (3 abril): Vía Crucis 14:00 (salida desde esta capilla)',
+      'Sábado Santo (4 abril): Vigilia Pascual 19:00',
+      'Domingo de Resurrección (5 abril): Eucaristía 08:00',
+      'Jueves Santo (2 abril): Adoración al Santísimo 20:30 en capillas',
+    ],
     pastoral: [
       'Coro de música',
       'Catequistas de Primera Comunión y Confirmación',
@@ -136,6 +159,13 @@ export const CHAPELS: Chapel[] = [
     patroness: 'Virgen de Luján',
     feast: '8 de mayo',
     masses: 'Domingos a las 9:00',
+    holyWeekSchedule: [
+      'Domingo de Ramos (29 marzo): Eucaristía 09:00',
+      'Jueves Santo (2 abril): Eucaristía 19:00',
+      'Sábado Santo (4 abril): Vigilia Pascual 20:15',
+      'Domingo de Resurrección (5 abril): Eucaristía 09:00',
+      'Jueves Santo (2 abril): Adoración al Santísimo 20:30 en capillas',
+    ],
     pastoral: [
       'Grupo de Monaguillos',
       'Catequistas de Primera Comunión y Confirmación',
@@ -149,6 +179,10 @@ export const CHAPELS: Chapel[] = [
     patroness: 'Virgen de Santa Rosa de Lima',
     feast: '24 de agosto',
     masses: 'Último domingo del mes a las 9:00',
+    holyWeekSchedule: [
+      'Domingo de Ramos (29 marzo): Eucaristía 09:15',
+      'Jueves Santo (2 abril): Adoración al Santísimo 20:30 en capillas',
+    ],
     pastoral: [
       'Primera Comunión y Confirmación',
       'Visitas domiciliarias navideñas con el Niño Jesús',
@@ -161,6 +195,9 @@ export const CHAPELS: Chapel[] = [
     patroness: 'Virgen de Urkupiña',
     feast: '',
     masses: 'Segundo domingo del mes a las 9:00',
+    holyWeekSchedule: [
+      'Jueves Santo (2 abril): Adoración al Santísimo 20:30 en capillas',
+    ],
     pastoral: [],
     image: `${basePath}chapels/surtidor-anita.jpg`,
   },
@@ -170,6 +207,12 @@ export const CHAPELS: Chapel[] = [
     patroness: 'Virgen del Carmen',
     feast: '16 de julio',
     masses: 'Domingos a las 7:00',
+    holyWeekSchedule: [
+      'Domingo de Ramos (29 marzo): Eucaristía 07:00',
+      'Sábado Santo (4 abril): Vigilia Pascual 19:00',
+      'Domingo de Resurrección (5 abril): Eucaristía 07:00',
+      'Jueves Santo (2 abril): Adoración al Santísimo 20:30 en capillas',
+    ],
     pastoral: [
       'Grupo de Monaguillos',
       'Catequesis de Primera Comunión y Confirmación',

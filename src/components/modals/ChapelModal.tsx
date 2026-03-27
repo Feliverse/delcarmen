@@ -1,4 +1,5 @@
 import type { Chapel } from '../../types/site';
+import { isHolyWeek2026Visible } from '../../data/siteData';
 
 type ChapelModalProps = {
   chapel: Chapel;
@@ -6,6 +7,8 @@ type ChapelModalProps = {
 };
 
 export function ChapelModal({ chapel, onClose }: ChapelModalProps) {
+  const holyWeekVisible = isHolyWeek2026Visible();
+
   return (
     <div className="fixed inset-0 z-[70] bg-slate-950/65 backdrop-blur-sm" onClick={onClose}>
       <div className="h-full w-full overflow-hidden bg-gradient-to-b from-white to-slate-50 shadow-2xl ring-1 ring-slate-900/10 md:mx-auto md:my-[7.5vh] md:h-[85vh] md:w-[85vw] md:rounded-xl">
@@ -52,6 +55,20 @@ export function ChapelModal({ chapel, onClose }: ChapelModalProps) {
                 <p className="mb-1 text-xs font-semibold uppercase tracking-wide text-slate-500">Horario de Misas</p>
                 <p className="text-base text-slate-800">{chapel.masses}</p>
               </div>
+
+              {holyWeekVisible && chapel.holyWeekSchedule && chapel.holyWeekSchedule.length > 0 && (
+                <div>
+                  <p className="mb-2 text-xs font-semibold uppercase tracking-wide text-slate-500">Semana Santa 2026</p>
+                  <ul className="space-y-1.5">
+                    {chapel.holyWeekSchedule.map((item) => (
+                      <li key={item} className="flex items-start gap-2 text-sm text-slate-700">
+                        <span className="mt-1.5 h-1.5 w-1.5 flex-shrink-0 rounded-full bg-amber-400" />
+                        {item}
+                      </li>
+                    ))}
+                  </ul>
+                </div>
+              )}
 
               {/* Pastoral */}
               {chapel.pastoral.length > 0 && (
