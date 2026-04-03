@@ -9,3 +9,5 @@ export {
   GROUPS,
   CHAPELS,
 } from './siteData';
+
+export { getBoliviaLiturgicalOverride } from './liturgicalBolivia';

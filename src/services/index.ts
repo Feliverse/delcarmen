@@ -1,6 +1,7 @@
 export {
   getDailyGospel,
   getDailyInspirationalMessage,
+  getWeeklyLiturgicalCalendar,
 } from './bibleService';
 
 export {
@@ -8,4 +9,4 @@ export {
   trackEvent,
 } from './analyticsService';
 
-export type { BiblePassage } from './bibleService';
+export type { BiblePassage, LiturgicalWeekDay } from './bibleService';

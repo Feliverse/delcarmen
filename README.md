@@ -1,7 +1,7 @@
 # Parroquia Nuestra Señora del Carmen — Sitio Web
 
 Sitio web parroquial desarrollado con React, TypeScript, Vite y Tailwind CSS.
-Incluye secciones informativas, horarios, grupos, contacto con Formspree/WhatsApp y módulo de Palabra del Día conectado a API.Bible.
+Incluye secciones informativas, horarios, grupos, contacto con Formspree/WhatsApp y módulo de Palabra del Día conectado a Liturgical Calendar API.
 
 ## Stack
 
@@ -14,7 +14,7 @@ Incluye secciones informativas, horarios, grupos, contacto con Formspree/WhatsAp
 ## Funcionalidades principales
 
 - Hero con carrusel y bloque de “Próxima misa”.
-- Palabra del Día (Evangelio + Reflexión) usando API.Bible.
+- Palabra del Día: Evangelio y Reflexion desde Liturgical Calendar API.
 - Horarios de Misas y Confesiones.
 - Trámites y Sacramentos.
 - Noticias y Eventos.
@@ -69,11 +69,10 @@ npm run preview
 
 Configura estas variables en `.env`:
 
-### API.Bible
+### Liturgical Calendar API
 
-- `VITE_BIBLE_API_KEY`: clave de API.Bible.
-- `VITE_BIBLE_API_BASE`: base URL (por defecto `https://rest.api.bible/v1`).
-- `VITE_BIBLE_ID`: traducción de Biblia (por defecto `48acedcf8595c754-01`).
+- `VITE_LITCAL_API_BASE`: base URL de LitCal (por defecto `https://litcal.johnromanodorazio.com:443/api/v5/calendar`).
+- `VITE_LITCAL_LOCALE`: locale para LitCal (por defecto `en_US`).
 
 ### Analítica
 
@@ -120,11 +119,11 @@ Esto ejecuta `predeploy` (`npm run build`) y luego publica `dist/`.
 - `src/components/layout`: navbar y footer.
 - `src/components/sections`: secciones principales de la home.
 - `src/components/modals`: modales (detalle de grupos).
-- `src/services`: integración con API.Bible.
+- `src/services`: integración con Liturgical Calendar API.
 - `src/data`: enlaces, grupos y configuración del sitio.
 - `public/hero-carousel`: imágenes y logos del hero.
 
 ## Notas técnicas
 
-- Si falta `VITE_BIBLE_API_KEY`, la sección Palabra del Día mostrará mensaje de configuración en lugar de datos.
+- Si falta LitCal o no hay datos del dia, la sección Palabra del Dia mostrara un mensaje de error.
 - El estilo visual está unificado con una línea moderna de acentos cálidos y tonos slate para contraste.

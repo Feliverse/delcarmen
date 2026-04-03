@@ -2,10 +2,11 @@ import { useEffect, useState } from 'react';
 import {
   getDailyGospel,
   getDailyInspirationalMessage,
+  getWeeklyLiturgicalCalendar,
   initializeAnalytics,
   trackEvent,
 } from './services';
-import type { BiblePassage } from './services';
+import type { BiblePassage, LiturgicalWeekDay } from './services';
 import { Footer, Navbar } from './components/layout';
 import { ChapelModal, DonationsModal } from './components/modals';
 import {
@@ -40,6 +41,9 @@ function App() {
   const [showMessage, setShowMessage] = useState(false);
   const [messageLoading, setMessageLoading] = useState(false);
   const [messageError, setMessageError] = useState<string | null>(null);
+  const [weeklyCalendar, setWeeklyCalendar] = useState<LiturgicalWeekDay[]>([]);
+  const [weeklyCalendarLoading, setWeeklyCalendarLoading] = useState(true);
+  const [weeklyCalendarError, setWeeklyCalendarError] = useState<string | null>(null);
   const [selectedChapel, setSelectedChapel] = useState<Chapel | null>(null);
   const [showDonationsModal, setShowDonationsModal] = useState(false);
 
@@ -53,12 +57,6 @@ function App() {
       setGospelError(null);
       setShowMessage(false);
       setShowGospel(true);
-      return;
-    }
-
-    if (!import.meta.env.VITE_BIBLE_API_KEY) {
-      setGospelError('Falta configurar VITE_BIBLE_API_KEY en el archivo .env');
-      setShowGospel(false);
       return;
     }
 
@@ -90,12 +88,6 @@ function App() {
       setMessageError(null);
       setShowGospel(false);
       setShowMessage(true);
-      return;
-    }
-
-    if (!import.meta.env.VITE_BIBLE_API_KEY) {
-      setMessageError('Falta configurar VITE_BIBLE_API_KEY en el archivo .env');
-      setShowMessage(false);
       return;
     }
 
@@ -145,6 +137,34 @@ function App() {
   }, []);
 
   useEffect(() => {
+    let active = true;
+
+    const loadWeeklyCalendar = async () => {
+      setWeeklyCalendarLoading(true);
+      setWeeklyCalendarError(null);
+
+      try {
+        const days = await getWeeklyLiturgicalCalendar();
+        if (!active) return;
+        setWeeklyCalendar(days);
+      } catch {
+        if (!active) return;
+        setWeeklyCalendar([]);
+        setWeeklyCalendarError('No se pudo cargar el calendario liturgico semanal.');
+      } finally {
+        if (!active) return;
+        setWeeklyCalendarLoading(false);
+      }
+    };
+
+    loadWeeklyCalendar();
+
+    return () => {
+      active = false;
+    };
+  }, []);
+
+  useEffect(() => {
     if (!selectedChapel && !showDonationsModal) return;
 
     const previousOverflow = document.body.style.overflow;
@@ -183,6 +203,9 @@ function App() {
           messageError={messageError}
           onToggleMessage={handleGetInspirationalMessage}
           formatReference={formatPassageReference}
+          weeklyCalendar={weeklyCalendar}
+          weeklyCalendarLoading={weeklyCalendarLoading}
+          weeklyCalendarError={weeklyCalendarError}
         />
 
         <SchedulesSection />
