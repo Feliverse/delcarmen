@@ -1,8 +1,7 @@
-import { CHAPELS, isHolyWeek2026Visible } from '../../data/siteData';
+import { CHAPELS } from '../../data/siteData';
 
 export function SchedulesSection() {
-  const holyWeekVisible = isHolyWeek2026Visible();
-  const chapelsWithHolyWeekSchedule = CHAPELS.filter((chapel) => chapel.holyWeekSchedule && chapel.holyWeekSchedule.length > 0);
+  
 
   return (
     <section id="horarios" className="animate-fade-in-soft scroll-mt-24 rounded-xl bg-white p-5 shadow-md md:p-10 lg:p-11">
@@ -39,27 +38,7 @@ export function SchedulesSection() {
         </article>
       </div>
 
-      {holyWeekVisible && (
-        <article className="mt-6 rounded-xl border border-amber-300 bg-gradient-to-b from-amber-50 to-white p-4 shadow-sm ring-1 ring-amber-200 md:mt-8 md:p-6">
-          <h3 className="mb-2 font-serif text-xl font-semibold text-conventual-habit md:text-2xl">Programacion Especial: Semana Santa 2026</h3>
-          <p className="mb-4 text-sm leading-relaxed text-conventual-ash md:text-base">
-            Horarios por capilla segun los afiches parroquiales de Domingo de Ramos y Triduo Pascual.
-          </p>
-
-          <div className="grid gap-4 md:grid-cols-2">
-            {chapelsWithHolyWeekSchedule.map((chapel) => (
-              <div key={chapel.name} className="rounded-lg border border-amber-200 bg-white p-4">
-                <h4 className="mb-2 font-serif text-lg font-semibold text-conventual-habit">{chapel.name}</h4>
-                <ul className="space-y-1 text-sm text-conventual-ash md:text-base">
-                  {chapel.holyWeekSchedule?.map((event) => (
-                    <li key={event}>{event}</li>
-                  ))}
-                </ul>
-              </div>
-            ))}
-          </div>
-        </article>
-      )}
+      
     </section>
   );
 }
