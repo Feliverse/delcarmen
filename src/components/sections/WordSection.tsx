@@ -1,3 +1,4 @@
+import { useState } from 'react';
 import type { BiblePassage, LiturgicalWeekDay } from '../../services';
 
 type WordSectionProps = {
@@ -33,6 +34,8 @@ export function WordSection({
   weeklyCalendarLoading,
   weeklyCalendarError,
 }: WordSectionProps) {
+  const [showUpcomingDays, setShowUpcomingDays] = useState(false);
+
   const getSourceColorClasses = (source?: string) => {
     if (!source) return { border: 'border-sky-300', bg: 'bg-sky-100/80', text: 'text-sky-900' };
 
@@ -241,10 +244,22 @@ export function WordSection({
 
             {weeklyCalendar.length > 2 && (
               <div>
-                <p className="mb-2 text-xs font-semibold uppercase tracking-wide text-slate-500">Proximos dias</p>
-                <ul className="space-y-2">
-                  {weeklyCalendar.slice(2).map((day) => renderWeeklyDayItem(day))}
-                </ul>
+                <button
+                  type="button"
+                  onClick={() => setShowUpcomingDays((current) => !current)}
+                  className="inline-flex items-center gap-2 rounded-full border border-slate-300 bg-white px-3 py-1.5 text-xs font-semibold uppercase tracking-wide text-slate-600 transition hover:bg-slate-100 hover:text-slate-900"
+                >
+                  {showUpcomingDays ? 'Mostrar menos' : 'Mostrar más'}
+                </button>
+
+                {showUpcomingDays && (
+                  <div className="mt-3">
+                    <p className="mb-2 text-xs font-semibold uppercase tracking-wide text-slate-500">Proximos dias</p>
+                    <ul className="space-y-2">
+                      {weeklyCalendar.slice(2).map((day) => renderWeeklyDayItem(day))}
+                    </ul>
+                  </div>
+                )}
               </div>
             )}
           </div>

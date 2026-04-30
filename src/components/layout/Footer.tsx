@@ -25,6 +25,16 @@ export function Footer({ parishFacebookUrl, interestLinks }: FooterProps) {
                 Facebook de la Parroquia de Quintanilla →
               </a>
             </li>
+            <li>
+              <a
+                href="https://www.facebook.com/francicanosconventuales"
+                target="_blank"
+                rel="noreferrer"
+                className="font-medium underline-offset-4 transition hover:text-amber-200 hover:underline"
+              >
+                Facebook de la comunidad franciscana conventual →
+              </a>
+            </li>
           </ul>
         </div>
 
