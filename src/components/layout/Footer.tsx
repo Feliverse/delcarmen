@@ -61,7 +61,7 @@ export function Footer({ parishFacebookUrl, interestLinks }: FooterProps) {
       </div>
 
       <div className="mx-auto mt-6 max-w-5xl border-t border-slate-200/25 pt-4 text-center md:mt-8">
-        <p className="text-sm sm:text-base">&copy; 2026 Parroquia de Quintanilla: Nuestra Señora del Carmen y San Maximiliano Kolbe (Frailes Menores Conventuales). Todos los derechos reservados.</p>
+        <p className="text-sm sm:text-base">&copy; 2026 Parroquia de Quintanilla: Nuestra Señora del Carmen y San Maximiliano Kolbe. Todos los derechos reservados.</p>
         <p className="mt-2 text-xs sm:text-sm">Paz y Bien 🕊️</p>
       </div>
     </footer>

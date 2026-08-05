@@ -31,6 +31,10 @@ export const INTEREST_LINKS: InterestLink[] = [
     href: import.meta.env.VITE_CEB_URL || 'https://ceb.bo/',
   },
   {
+    label: 'Hermanas Hospitalarias',
+    href: import.meta.env.VITE_CEB_URL || 'https://hospitalarias.org/testimonios-de-misericordia-comunidad-terapeutica-puntiti/',
+  },
+  {
     label: 'Vatican News (Español)',
     href: import.meta.env.VITE_VATICAN_NEWS_URL || 'https://www.vaticannews.va/es.html',
   },
