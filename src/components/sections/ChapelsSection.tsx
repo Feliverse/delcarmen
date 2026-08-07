@@ -5,12 +5,35 @@ type ChapelsSectionProps = {
   onSelectChapel: (chapel: Chapel) => void;
 };
 
+const FEAST_MONTHS: Record<string, number> = {
+  enero: 0,
+  febrero: 1,
+  marzo: 2,
+  abril: 3,
+  mayo: 4,
+  junio: 5,
+  julio: 6,
+  agosto: 7,
+  septiembre: 8,
+  octubre: 9,
+  noviembre: 10,
+  diciembre: 11,
+};
+
+function getFeastMonth(feast: string) {
+  const normalized = feast.toLowerCase();
+  const match = Object.keys(FEAST_MONTHS).find((month) => normalized.includes(month));
+  return match ? FEAST_MONTHS[match] : null;
+}
+
 export function ChapelsSection({ chapels, onSelectChapel }: ChapelsSectionProps) {
   const cardVariants = [
     'border-amber-300 bg-amber-50 ring-1 ring-amber-200',
     'border-slate-300 bg-white ring-1 ring-slate-200',
     'border-slate-700 bg-slate-700 text-slate-50 ring-1 ring-slate-500',
   ];
+
+  const currentMonth = new Date().getMonth();
 
   return (
     <section
@@ -26,6 +49,11 @@ export function ChapelsSection({ chapels, onSelectChapel }: ChapelsSectionProps)
 
       <div className="grid gap-4 md:grid-cols-3">
         {chapels.map((chapel, index) => (
+          (() => {
+            const feastMonth = chapel.feast ? getFeastMonth(chapel.feast) : null;
+            const isFeastThisMonth = feastMonth === currentMonth;
+
+            return (
           <div
             key={chapel.name}
             role="button"
@@ -37,37 +65,48 @@ export function ChapelsSection({ chapels, onSelectChapel }: ChapelsSectionProps)
                 onSelectChapel(chapel);
               }
             }}
-            className={`rounded-xl border p-4 text-left shadow-sm transition hover:-translate-y-0.5 hover:border-amber-300 focus:outline-none focus:ring-2 focus:ring-amber-300/70 md:p-6 ${cardVariants[index % cardVariants.length]}`}
+            className={`group relative overflow-hidden rounded-xl border p-4 text-left shadow-sm transition duration-300 hover:-translate-y-0.5 focus:outline-none focus:ring-2 focus:ring-amber-300/70 md:p-6 ${cardVariants[index % cardVariants.length]} ${isFeastThisMonth ? 'border-amber-500 ring-2 ring-amber-400/70 shadow-lg shadow-amber-200/50' : 'hover:border-amber-300'}`}
           >
-            <h3 className={`font-serif text-lg font-semibold md:text-xl ${
-              index % cardVariants.length === 2 ? 'text-slate-50' : 'text-slate-900'
-            }`}>
-              {chapel.name}
-            </h3>
-            <p className={`text-sm leading-relaxed md:text-base ${
-              index % cardVariants.length === 2 ? 'text-slate-100' : 'text-slate-600'
-            }`}>
-              {chapel.patroness}
-            </p>
-            {chapel.feast && (
-              <p className={`mt-0.5 text-xs ${
-                index % cardVariants.length === 2 ? 'text-slate-300' : 'text-slate-500'
-              }`}>
-                Fiesta: {chapel.feast}
+            <div
+              aria-hidden="true"
+              className={`absolute inset-0 bg-cover bg-center opacity-0 transition-opacity duration-300 group-hover:opacity-100 ${isFeastThisMonth ? 'group-hover:opacity-100' : ''}`}
+              style={{ backgroundImage: `url(${chapel.image})` }}
+            />
+            <div
+              aria-hidden="true"
+              className={`absolute inset-0 bg-slate-950/10 transition-colors duration-300 group-hover:bg-slate-950/55 ${isFeastThisMonth ? 'bg-slate-950/20 group-hover:bg-slate-950/60' : ''}`}
+            />
+
+            <div className="relative z-10 transition-colors duration-300 group-hover:text-white">
+              <div className="mb-3 flex items-center justify-between gap-3">
+                <h3 className="font-serif text-lg font-semibold text-slate-900 transition-colors duration-300 group-hover:text-white md:text-xl">
+                  {chapel.name}
+                </h3>
+                {isFeastThisMonth && (
+                  <span className="shrink-0 rounded-full bg-amber-300/90 px-2.5 py-1 text-[10px] font-bold uppercase tracking-wide text-slate-900 transition-colors duration-300 group-hover:bg-amber-200">
+                    Fiesta del mes
+                  </span>
+                )}
+              </div>
+              <p className="text-sm leading-relaxed text-slate-600 transition-colors duration-300 group-hover:text-slate-100 md:text-base">
+                {chapel.patroness}
               </p>
-            )}
-            <button
-              type="button"
-              onClick={() => onSelectChapel(chapel)}
-              className={`mt-3 text-xs font-semibold ${
-                index % cardVariants.length === 2
-                  ? 'text-amber-300 hover:text-amber-200'
-                  : 'text-slate-900 hover:text-amber-600'
-              }`}
-            >
-              Ver comunidad →
-            </button>
+              {chapel.feast && (
+                <p className="mt-0.5 text-xs text-slate-500 transition-colors duration-300 group-hover:text-slate-200">
+                  Fiesta: {chapel.feast}
+                </p>
+              )}
+              <button
+                type="button"
+                onClick={() => onSelectChapel(chapel)}
+                className="mt-3 text-xs font-semibold text-slate-900 transition-colors duration-300 group-hover:text-amber-200"
+              >
+                Ver comunidad →
+              </button>
+            </div>
           </div>
+            );
+          })()
         ))}
       </div>
     </section>

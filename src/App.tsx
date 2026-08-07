@@ -25,6 +25,7 @@ import {
   FORM_SPREE_ENDPOINT,
   GROUPS,
   INTEREST_LINKS,
+  NEWS_EVENTS,
   NAV_LINKS,
   PARISH_FACEBOOK_URL,
   WHATSAPP_LINK,
@@ -210,7 +211,7 @@ function App() {
 
         <SchedulesSection />
         <ProceduresSection />
-        <NewsSection primaryButtonClass={primaryButtonClass} />
+        <NewsSection events={NEWS_EVENTS} parishFacebookUrl={PARISH_FACEBOOK_URL} />
         <GroupsSection
           groups={GROUPS}
           whatsappLink={WHATSAPP_LINK}

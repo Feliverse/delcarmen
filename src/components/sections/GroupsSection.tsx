@@ -16,6 +16,14 @@ export function GroupsSection({ groups, whatsappLink, onWhatsappClick }: GroupsS
     setOpenIndex((current) => (current === index ? null : index));
   };
 
+  const openGroup = (index: number) => {
+    setOpenIndex(index);
+  };
+
+  const handleGroupMouseLeave = (index: number) => {
+    setOpenIndex((current) => (current === index ? null : current));
+  };
+
   return (
     <section id="grupos" className="animate-fade-in-soft scroll-mt-24 rounded-xl bg-gradient-to-b from-white via-amber-50/30 to-slate-100 p-5 shadow-md md:p-10 lg:p-11">
       <h2 className="mb-2 font-serif text-2xl font-semibold text-slate-900 md:text-3xl">Nuestros Grupos</h2>
@@ -32,7 +40,12 @@ export function GroupsSection({ groups, whatsappLink, onWhatsappClick }: GroupsS
             : whatsappLink;
 
           return (
-            <article key={grupo.name} className="overflow-hidden rounded-xl border border-slate-200 bg-white shadow-sm ring-1 ring-slate-200/70">
+            <article
+              key={grupo.name}
+              className="overflow-hidden rounded-xl border border-slate-200 bg-white shadow-sm ring-1 ring-slate-200/70"
+              onMouseEnter={() => openGroup(index)}
+              onMouseLeave={() => handleGroupMouseLeave(index)}
+            >
               <button
                 type="button"
                 onClick={() => toggleGroup(index)}

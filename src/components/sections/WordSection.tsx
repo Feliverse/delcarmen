@@ -49,7 +49,7 @@ export function WordSection({
   };
 
   const renderLiturgicalMeta = (content: BiblePassage) => {
-    const items = [content.liturgicalSeason, content.liturgicalColor, content.celebrationGrade].filter(Boolean);
+    const items = [content.liturgicalSeason, content.celebrationGrade].filter(Boolean);
     if (items.length === 0) return null;
 
     return (
@@ -94,18 +94,21 @@ export function WordSection({
   const reflectionButtonActiveClass =
     'border-slate-800 bg-slate-800 text-amber-100 hover:bg-amber-400 hover:text-slate-900';
 
-  const getColorDotClass = (color?: string) => {
+  const getLiturgicalAccentClass = (color?: string) => {
     const normalized = (color || '').toLowerCase();
-    if (normalized.includes('morado')) return 'bg-violet-600';
-    if (normalized.includes('blanco')) return 'bg-slate-200 ring-1 ring-slate-400';
-    if (normalized.includes('rojo')) return 'bg-red-600';
-    if (normalized.includes('verde')) return 'bg-emerald-600';
-    if (normalized.includes('rosa')) return 'bg-rose-400';
-    return 'bg-slate-500';
+    if (normalized.includes('morado')) return 'border-l-violet-500 bg-violet-50';
+    if (normalized.includes('blanco')) return 'border-l-slate-300 bg-slate-50';
+    if (normalized.includes('rojo')) return 'border-l-red-500 bg-red-50';
+    if (normalized.includes('verde')) return 'border-l-emerald-500 bg-emerald-50';
+    if (normalized.includes('rosa')) return 'border-l-rose-400 bg-rose-50';
+    return 'border-l-slate-400 bg-slate-50';
   };
 
   const renderWeeklyDayItem = (day: LiturgicalWeekDay) => (
-    <li key={day.dateKey} className="rounded-lg border border-slate-200 bg-slate-50 px-3 py-2">
+    <li
+      key={day.dateKey}
+      className={`rounded-lg border border-slate-200 px-3 py-2 ${day.liturgicalColor ? getLiturgicalAccentClass(day.liturgicalColor) : 'bg-slate-50'}`}
+    >
       <div className="flex flex-wrap items-center justify-between gap-2">
         <p className="text-sm font-semibold text-slate-800">{day.dayLabel}</p>
         <div className="flex flex-wrap items-center gap-2">
@@ -117,12 +120,6 @@ export function WordSection({
               </span>
             );
           })()}
-          {day.liturgicalColor && (
-            <span className="inline-flex items-center gap-1 rounded-full border border-slate-300 bg-white px-2 py-0.5 text-[10px] font-semibold uppercase tracking-wide text-slate-700">
-              <span className={`h-2 w-2 rounded-full ${getColorDotClass(day.liturgicalColor)}`} />
-              {day.liturgicalColor}
-            </span>
-          )}
           {day.celebrationGrade && (
             <span className="rounded-full border border-amber-300 bg-amber-100 px-2 py-0.5 text-[10px] font-semibold uppercase tracking-wide text-slate-700">
               {day.celebrationGrade}

@@ -1,4 +1,4 @@
-import type { Chapel, InterestLink, NavLink, ParishGroup } from '../types/site';
+import type { Chapel, InterestLink, NavLink, ParishGroup, ParishNewsEvent } from '../types/site';
 
 export const NAV_LINKS: NavLink[] = [
   { label: 'Inicio', href: '#hero' },
@@ -223,5 +223,56 @@ export const CHAPELS: Chapel[] = [
       'Visitas domiciliarias en novena a la Virgen para rezar el rosario',
     ],
     image: `${basePath}chapels/esmeralda.jpg`,
+  },
+];
+
+function getFeastMonthIndex(feast: string) {
+  const normalized = feast.toLowerCase();
+  const months: Record<string, number> = {
+    enero: 0,
+    febrero: 1,
+    marzo: 2,
+    abril: 3,
+    mayo: 4,
+    junio: 5,
+    julio: 6,
+    agosto: 7,
+    septiembre: 8,
+    octubre: 9,
+    noviembre: 10,
+    diciembre: 11,
+  };
+
+  const matchedMonth = Object.keys(months).find((month) => normalized.includes(month));
+  return matchedMonth ? months[matchedMonth] : undefined;
+}
+
+export const NEWS_EVENTS: ParishNewsEvent[] = [
+  ...CHAPELS.filter((chapel) => chapel.feast).map((chapel) => ({
+    title: `Fiesta patronal de ${chapel.patroness}`,
+    dateLabel: chapel.feast,
+    description: `Celebración patronal de la comunidad de ${chapel.name}, con misa, encuentro fraterno y participación de la feligresía.`,
+    chapelName: chapel.name,
+    image: chapel.image,
+    monthIndex: getFeastMonthIndex(chapel.feast),
+  })),
+  {
+    title: 'Celebración de San Maximiliano Kolbe',
+    dateLabel: '14 de agosto',
+    description: 'Eucaristía y jornada de oración en honor a San Maximiliano Kolbe, patrono de la Milicia de la Inmaculada y testimonio de entrega total a Cristo.',
+    chapelName: 'Parroquia / Milicia de la Inmaculada',
+    image: `${basePath}groups/kolbe.webp`,
+    monthIndex: 7,
+    isFeatured: true,
+    referenceUrl: 'https://www.aciprensa.com/noticias/51807/hoy-se-celebra-a-san-maximiliano-kolbe-martir-de-la-vida-victima-de-la-ideologia',
+    referenceLabel: 'Ver la nota',
+  },
+  {
+    title: '30 años del Centro Puntiti',
+    dateLabel: 'Aniversario comunitario',
+    description: 'La comunidad Terapéutica Puntiti celebra 30 años de historia, servicio, fe compartida y hospitalidad. Una ocasión para agradecer, recordar y renovar el compromiso pastoral.',
+    chapelName: 'Comunidad de Puntiti',
+    image: `${basePath}groups/CentroPuntiti.jpg`,
+    isFeatured: true,
   },
 ];

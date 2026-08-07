@@ -26,3 +26,15 @@ export type Chapel = {
   pastoral: string[];
   image: string;
 };
+
+export type ParishNewsEvent = {
+  title: string;
+  dateLabel: string;
+  description: string;
+  chapelName: string;
+  image?: string;
+  monthIndex?: number;
+  isFeatured?: boolean;
+  referenceUrl?: string;
+  referenceLabel?: string;
+};
