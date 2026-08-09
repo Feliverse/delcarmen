@@ -19,7 +19,7 @@ export function NewsSection({ events, parishFacebookUrl }: NewsSectionProps) {
         {events.map((event) => {
           const isCurrentMonth = typeof event.monthIndex === 'number' && event.monthIndex === currentMonth;
           const referenceUrl = event.referenceUrl || (isCurrentMonth ? parishFacebookUrl : undefined);
-          const referenceLabel = event.referenceLabel || (event.referenceUrl ? 'Ver más' : 'Ver más en Facebook');
+          const referenceLabel = event.referenceLabel || (event.referenceUrl ? 'Ver fotos en Facebook' : 'Ver más en Facebook');
 
           return (
             <article

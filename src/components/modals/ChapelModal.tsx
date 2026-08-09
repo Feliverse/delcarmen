@@ -55,7 +55,19 @@ export function ChapelModal({ chapel, onClose }: ChapelModalProps) {
                 <p className="text-base text-slate-800">{chapel.masses}</p>
               </div>
 
-              
+              {chapel.facebookUrl && (
+                <div>
+                  <p className="mb-1 text-xs font-semibold uppercase tracking-wide text-slate-500">Facebook de la capilla</p>
+                  <a
+                    href={chapel.facebookUrl}
+                    target="_blank"
+                    rel="noreferrer"
+                    className="inline-flex items-center rounded-md border border-amber-300 bg-white px-3 py-2 text-sm font-semibold text-slate-900 transition hover:bg-amber-100"
+                  >
+                    Ver fotos y eventos →
+                  </a>
+                </div>
+              )}
 
               {/* Pastoral */}
               {chapel.pastoral.length > 0 && (

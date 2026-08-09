@@ -111,6 +111,7 @@ export const CHAPELS: Chapel[] = [
     ],
     pastoral: ['Grupo de Monaguillos', 'Grupo de música', 'Primera Comunión y Confirmación)'],
     image: `${basePath}chapels/abra.jpg`,
+    facebookUrl: '',
   },
   {
     name: 'Comunidad de Puntiti',
@@ -133,6 +134,7 @@ export const CHAPELS: Chapel[] = [
       'Catequesis con padres de familia',
     ],
     image: `${basePath}chapels/puntiti.jpg`,
+    facebookUrl: '',
   },
   {
     name: 'Comunidad de Chacacollo',
@@ -156,6 +158,7 @@ export const CHAPELS: Chapel[] = [
       'Visitas domiciliarias en novena a la Virgen para rezar el rosario',
     ],
     image: `${basePath}chapels/chacacollo.jpg`,
+    facebookUrl: 'https://www.facebook.com/media/set/?vanity=parroquiavirgendelcarmenymaximilianokolbe&set=a.1463953312427655',
   },
   {
     name: 'Comunidad de Magisterio',
@@ -176,6 +179,7 @@ export const CHAPELS: Chapel[] = [
       'Catequesis con padres de familia',
     ],
     image: `${basePath}chapels/magisterio.jpg`,
+    facebookUrl: '',
   },
   {
     name: 'Comunidad de Pucará',
@@ -192,6 +196,7 @@ export const CHAPELS: Chapel[] = [
       'Visitas domiciliarias navideñas con el Niño Jesús',
     ],
     image: `${basePath}chapels/pucara.jpg`,
+    facebookUrl: '',
   },
   {
     name: 'Capilla del Surtidor Anita',
@@ -204,6 +209,27 @@ export const CHAPELS: Chapel[] = [
     ],
     pastoral: [],
     image: `${basePath}chapels/surtidor-anita.jpg`,
+    facebookUrl: '',
+  },
+  {
+    name: 'Comunidad de Quintanilla',
+    location: 'Zona Quintanilla – Av. Maximiliano Kolbe',
+    patroness: 'Virgen del Carmen',
+    feast: '16 de julio',
+    masses: 'Domingos a las 7:00',
+    holyWeekSchedule: [
+      'Domingo de Ramos (29 marzo): Eucaristía 07:00',
+      'Sábado Santo (4 abril): Vigilia Pascual 19:00',
+      'Domingo de Resurrección (5 abril): Eucaristía 07:00',
+      'Jueves Santo (2 abril): Adoración al Santísimo 20:30 en capillas',
+    ],
+    pastoral: [
+      'Grupo de Monaguillos',
+      'Catequesis de Primera Comunión y Confirmación',
+      'Visitas domiciliarias en novena a la Virgen para rezar el rosario',
+    ],
+    image: `${basePath}chapels/delcarmen.jpg`,
+    facebookUrl: 'https://www.facebook.com/media/set/?vanity=parroquiavirgendelcarmenymaximilianokolbe&set=a.1463953312427655',
   },
   {
     name: 'Comunidad de Esmeralda',
@@ -223,6 +249,7 @@ export const CHAPELS: Chapel[] = [
       'Visitas domiciliarias en novena a la Virgen para rezar el rosario',
     ],
     image: `${basePath}chapels/esmeralda.jpg`,
+    facebookUrl: '',
   },
 ];
 
@@ -255,6 +282,9 @@ export const NEWS_EVENTS: ParishNewsEvent[] = [
     chapelName: chapel.name,
     image: chapel.image,
     monthIndex: getFeastMonthIndex(chapel.feast),
+    facebookUrl: chapel.facebookUrl,
+    referenceUrl: chapel.facebookUrl || undefined,
+    referenceLabel: chapel.facebookUrl ? 'Ver fotos en Facebook' : undefined,
   })),
   {
     title: 'Celebración de San Maximiliano Kolbe',
@@ -274,5 +304,7 @@ export const NEWS_EVENTS: ParishNewsEvent[] = [
     chapelName: 'Comunidad de Puntiti',
     image: `${basePath}groups/CentroPuntiti.jpg`,
     isFeatured: true,
+    referenceUrl: 'https://www.facebook.com/media/set/?vanity=parroquiavirgendelcarmenymaximilianokolbe&set=a.1475502997939353',
+    referenceLabel: 'Ver la nota',
   },
 ];

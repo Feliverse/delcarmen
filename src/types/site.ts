@@ -25,6 +25,7 @@ export type Chapel = {
   holyWeekSchedule?: string[];
   pastoral: string[];
   image: string;
+  facebookUrl?: string;
 };
 
 export type ParishNewsEvent = {
@@ -37,4 +38,5 @@ export type ParishNewsEvent = {
   isFeatured?: boolean;
   referenceUrl?: string;
   referenceLabel?: string;
+  facebookUrl?: string;
 };
